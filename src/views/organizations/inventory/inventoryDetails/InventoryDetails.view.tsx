@@ -3,20 +3,55 @@ import styles from './InventoryDetails.module.scss';
 import formStyles from '@/Form.module.scss';
 import PhotoUpload from '@/components/photoUpload/PhotoUpload.component';
 import {
+  Button,
   Divider,
   Form,
   Input,
   InputNumber,
   Select,
-  Slider,
   Switch,
+  message,
 } from 'antd';
+import { useRouter } from 'next/router';
+import usePostData from '@/state/usePostData';
+import useUpdateData from '@/state/useUpdateData';
+import { on } from 'events';
 
 const InventoryDetails = () => {
   const [form] = Form.useForm();
+  const router = useRouter();
+  const { id } = router.query;
+
+  const { mutate: addInventory } = usePostData({
+    url: `/inventory`,
+    key: 'addInventory',
+    queriesToInvalidate: ['inventoryList'],
+    redirectUrl: '/organization/inventory',
+    successMessage: 'Inventory added successfully',
+  });
+
+  const { mutate: updateInventory } = useUpdateData({
+    queriesToInvalidate: ['inventoryList'],
+    successMessage: 'Inventory updated successfully',
+    redirectUrl: '/organization/inventory',
+  });
+
+  const onFinish = (values: any) => {
+    console.log('Success:', values);
+    if (id) {
+      updateInventory({ url: `/inventory/${id}`, formData: values });
+    } else {
+      addInventory({ ...values });
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <Form form={form} layout="vertical" className={formStyles.form}>
+      <Form
+        form={form}
+        layout="vertical"
+        className={formStyles.form}
+      >
         <Divider orientation="center">Product Information</Divider>
         <div className={formStyles.form__formContainer}>
           <div className={formStyles.form__formGroup}>
@@ -42,7 +77,7 @@ const InventoryDetails = () => {
             <div className={formStyles.form__inputGroup}>
               <Form.Item
                 label="Product Name"
-                name="inventoryName"
+                name="name"
                 rules={[
                   { required: true, message: 'Please input inventory name' },
                 ]}
@@ -53,10 +88,8 @@ const InventoryDetails = () => {
             <div className={formStyles.form__inputGroup}>
               <Form.Item
                 label="Product Categorization"
-                name="inventoryCategorization"
-                rules={[
-                  { required: true, message: 'Please input inventory name' },
-                ]}
+                name="category"
+                rules={[]}
                 tooltip="This allows you to categorize your products for easy access and management. You can add multiple categories by separating them with a comma."
               >
                 <Select
@@ -82,7 +115,7 @@ const InventoryDetails = () => {
             <div className={formStyles.form__inputGroup}>
               <Form.Item
                 label="Product Price"
-                name="inventoryPrice"
+                name="price"
                 rules={[
                   { required: true, message: 'Please input inventory price' },
                 ]}
@@ -115,10 +148,59 @@ const InventoryDetails = () => {
             </div>
             <div className={formStyles.form__inputGroup}>
               <Form.Item
+                label="Inventory Stock"
+                name="quantity"
+                rules={[]}
+                tooltip="This is the stock of your product. It is used to manage your inventory."
+              >
+                <InputNumber
+                  min={0}
+                  controls={false}
+                  className={formStyles.form__input}
+                />
+              </Form.Item>
+            </div>
+          </div>
+          <div className={formStyles.form__formGroup}>
+            <div className={formStyles.form__inputGroup}>
+              <Form.Item
                 label="Out of Stock"
                 name="outOfStock"
                 rules={[]}
                 tooltip="This is the out of stock status of your product. It is used to manage your inventory. Marking the product as out of stock will prevent customers from purchasing the product."
+              >
+                <Switch checkedChildren="Yes" unCheckedChildren="No" />
+              </Form.Item>
+            </div>
+            <div className={formStyles.form__inputGroup}>
+              <Form.Item
+                label="Unlimited Stock"
+                name="unlimitedStock"
+                rules={[]}
+                tooltip="This helps with the stock management of your product. Marking the product as unlimited stock will prevent the product from going out of stock. This is mainly used for digital products."
+              >
+                <Switch checkedChildren="Yes" unCheckedChildren="No" />
+              </Form.Item>
+            </div>
+            <div className={formStyles.form__inputGroup}>
+              <Form.Item
+                label="Product Visibility"
+                name="productVisibility"
+                rules={[]}
+                tooltip="This is the visibility of your product. It is used to manage your inventory. Marking the product as invisible will prevent customers from seeing the product."
+              >
+                <Switch
+                  checkedChildren="Invisibile"
+                  unCheckedChildren="Visible"
+                />
+              </Form.Item>
+            </div>
+            <div className={formStyles.form__inputGroup}>
+              <Form.Item
+                label="Requires Shipping"
+                name="requiresShipping"
+                rules={[]}
+                tooltip="products that require shipping will be charged differently from products that do not require shipping. If you have a physical product, you should mark it as requiring shipping. If you have a digital product, you should mark it as not requiring shipping."
               >
                 <Switch checkedChildren="Yes" unCheckedChildren="No" />
               </Form.Item>
@@ -291,6 +373,29 @@ const InventoryDetails = () => {
               </Form.Item>
             </div>
           </div>
+        </div>
+        {/* buttons container */}
+        <div className={formStyles.form__buttonContainer}>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className={formStyles.form__button}
+            loading={false}
+            onClick={() => {
+              form
+                .validateFields()
+                .then((values) => {
+                  onFinish(values);
+                })
+                .catch((errorInfo) => {
+                  for (const error of errorInfo.errorFields) {
+                    message.error(error.errors);
+                  }
+                });
+            }}
+          >
+            {id ? 'Update Inventory' : 'Add Inventory'}
+          </Button>
         </div>
       </Form>
     </div>
