@@ -6,7 +6,7 @@ import useFetchData from '@/state/useFetchData';
 import { useUser } from '@/state/auth';
 import { FaPlus } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { Button, Table } from 'antd';
+import { Button, Table, Tag } from 'antd';
 
 type Props = {};
 
@@ -62,14 +62,38 @@ const InventoryView = (props: Props) => {
               key: 'name',
             },
             {
+              title: 'SKU',
+              dataIndex: 'SKU',
+              key: 'sku',
+            },
+            {
+              title: 'Unlimited Stock',
+              dataIndex: 'unlimitedStock',
+              key: 'unlimitedStock',
+              render: (text, record) => <>{record?.unlimitedStock ? 'Yes' : 'No'}</>,
+            },
+            {
               title: 'Category',
               dataIndex: 'category',
               key: 'category',
+              render: (text, record) => (
+                // category is an array of strings, so render only the first three categories
+                <>
+                  {record?.category.slice(0, 3).map((item) => {
+                    return (
+                      <Tag key={item} color="blue">
+                        {item}
+                      </Tag>
+                    );
+                  })}
+                </>
+              ),
             },
             {
               title: 'Price',
               dataIndex: 'price',
               key: 'price',
+              render: (text, record) => <>${record?.price}</>,
             },
             {
               title: 'Quantity',

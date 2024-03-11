@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './InventoryDetails.module.scss';
 import formStyles from '@/Form.module.scss';
 import PhotoUpload from '@/components/photoUpload/PhotoUpload.component';
@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import usePostData from '@/state/usePostData';
 import useUpdateData from '@/state/useUpdateData';
 import { on } from 'events';
+import useFetchData from '@/state/useFetchData';
 
 const InventoryDetails = () => {
   const [form] = Form.useForm();
@@ -36,6 +37,11 @@ const InventoryDetails = () => {
     redirectUrl: '/organization/inventory',
   });
 
+  const { data, isFetching, isLoading, error, isError } = useFetchData({
+    url: `/inventory/${id}`,
+    key: 'inventoryDetails',
+  });
+
   const onFinish = (values: any) => {
     console.log('Success:', values);
     if (id) {
@@ -45,13 +51,15 @@ const InventoryDetails = () => {
     }
   };
 
+  useEffect(() => {
+    if (id) {
+      form.setFieldsValue(data?.payload.inventory);
+    }
+  }, [data]);
+
   return (
     <div className={styles.container}>
-      <Form
-        form={form}
-        layout="vertical"
-        className={formStyles.form}
-      >
+      <Form form={form} layout="vertical" className={formStyles.form}>
         <Divider orientation="center">Product Information</Divider>
         <div className={formStyles.form__formContainer}>
           <div className={formStyles.form__formGroup}>
