@@ -6,7 +6,7 @@ import useFetchData from '@/state/useFetchData';
 import { useUser } from '@/state/auth';
 import { FaPlus } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { Table } from 'antd';
+import { Button, Table } from 'antd';
 
 type Props = {};
 
@@ -14,7 +14,7 @@ const InventoryView = (props: Props) => {
   const router = useRouter();
   const { data: loggedInData } = useUser();
   const { data, isFetching, isLoading, error, isError } = useFetchData({
-    url: `/merchant/${loggedInData?.user?._id}/inventory`,
+    url: `/inventory`,
     key: 'inventory',
   });
 
@@ -51,7 +51,7 @@ const InventoryView = (props: Props) => {
         disableButtons={isFetching}
       >
         <Table
-          dataSource={data?.payload?.inventory}
+          dataSource={data?.payload?.merchandise}
           loading={isLoading}
           pagination={false}
           rowKey={(record) => record._id}
@@ -81,15 +81,13 @@ const InventoryView = (props: Props) => {
               dataIndex: 'actions',
               key: 'actions',
               render: (text, record) => (
-                <div>
-                  <button
-                    onClick={() => {
-                      router.push(`/organization/inventory/${record._id}`);
-                    }}
-                  >
-                    View
-                  </button>
-                </div>
+                <Button
+                  onClick={() => {
+                    router.push(`/organization/inventory/${record._id}`);
+                  }}
+                >
+                  View
+                </Button>
               ),
             },
           ]}
