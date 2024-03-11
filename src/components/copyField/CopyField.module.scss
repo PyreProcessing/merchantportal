@@ -1,0 +1,21 @@
+@import '../../globals.scss';
+.container {
+  background-color: $quintenary-color;
+  padding: 10px;
+  word-wrap: break-word;
+  color: $primary-color;
+  border-radius: 5px;
+
+  gap: 10px;
+  .field {
+    word-wrap: break-word;
+    // width: 350px;
+  }
+
+  .copy {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 15px;
+  }
+}

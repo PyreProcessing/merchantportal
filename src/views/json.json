@@ -1,0 +1,760 @@
+{
+  "json": [
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.4955,
+        "longitude": -98.56195,
+        "zipcode": "78229"
+      },
+      "count": 2
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.42458,
+        "longitude": -98.49461,
+        "zipcode": "78205"
+      },
+      "count": 12
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Tennessee",
+        "city": "McMinnville",
+        "latitude": 35.6864,
+        "longitude": -85.77495,
+        "zipcode": "37110-2047"
+      },
+      "count": 3
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Bandera",
+        "latitude": 29.73198,
+        "longitude": -99.10878,
+        "zipcode": "78003-3597"
+      },
+      "count": 2
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Alabama",
+        "city": "Northport",
+        "latitude": 33.26119,
+        "longitude": -87.54378,
+        "zipcode": "35473-7674"
+      },
+      "count": 2
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.54201,
+        "longitude": -98.66499,
+        "zipcode": "78254"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Pennsylvania",
+        "city": "Doylestown",
+        "latitude": 40.27911,
+        "longitude": -75.12653,
+        "zipcode": "18901-2858"
+      },
+      "count": 14
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "South Carolina",
+        "city": "Columbia",
+        "latitude": 34.1473,
+        "longitude": -80.90686,
+        "zipcode": "29229"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Austin",
+        "latitude": 30.26759,
+        "longitude": -97.74299,
+        "zipcode": "78701"
+      },
+      "count": 22
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Georgia",
+        "city": "Atlanta",
+        "latitude": 33.74831,
+        "longitude": -84.39111,
+        "zipcode": "30303"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Live Oak",
+        "latitude": 29.55488,
+        "longitude": -98.32698,
+        "zipcode": "78233"
+      },
+      "count": 18
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.42507,
+        "longitude": -98.47143,
+        "zipcode": "78202"
+      },
+      "count": 3
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Brownsville",
+        "latitude": 25.92707,
+        "longitude": -97.48139,
+        "zipcode": "78521"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Austin",
+        "latitude": 30.27395,
+        "longitude": -97.74409,
+        "zipcode": "78701-2112"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Richardson",
+        "latitude": 32.94833,
+        "longitude": -96.72985,
+        "zipcode": ""
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.53383,
+        "longitude": -98.3684,
+        "zipcode": "78239"
+      },
+      "count": 26
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Raymondville",
+        "latitude": 26.48387,
+        "longitude": -97.77322,
+        "zipcode": "78580-4085"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Live Oak",
+        "latitude": 29.56006,
+        "longitude": -98.34341,
+        "zipcode": "78233-2610"
+      },
+      "count": 2
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Colorado",
+        "city": "Louisville",
+        "latitude": 39.96518,
+        "longitude": -105.16522,
+        "zipcode": "80027-1210"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.38768,
+        "longitude": -98.37599,
+        "zipcode": "78222"
+      },
+      "count": 4
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Alabama",
+        "city": "Birmingham",
+        "latitude": 33.52068,
+        "longitude": -86.81176,
+        "zipcode": "35203"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "New Braunfels",
+        "latitude": 29.69925,
+        "longitude": -98.12151,
+        "zipcode": "78130"
+      },
+      "count": 6
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "California",
+        "city": "Los Angeles",
+        "latitude": 34.05357,
+        "longitude": -118.24545,
+        "zipcode": "90012"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.45285,
+        "longitude": -98.62054,
+        "zipcode": "78238-4535"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Mississippi",
+        "city": "Hattiesburg",
+        "latitude": 31.43092,
+        "longitude": -89.31786,
+        "zipcode": "39401"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "California",
+        "city": "Mountain View",
+        "latitude": 37.4224,
+        "longitude": -122.08421,
+        "zipcode": "94043-1351"
+      },
+      "count": 3
+    },
+    {
+      "_id": {
+        "continent": "Europe",
+        "country": "Germany",
+        "state": "Hesse",
+        "city": "Frankfurt",
+        "latitude": 50.11208,
+        "longitude": 8.68341,
+        "zipcode": "60311"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "California",
+        "city": "Santa Clara",
+        "latitude": 37.35411,
+        "longitude": -121.95524,
+        "zipcode": ""
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Ohio",
+        "city": "",
+        "latitude": 39.96199,
+        "longitude": -83.00275,
+        "zipcode": ""
+      },
+      "count": 3
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.52646,
+        "longitude": -98.403,
+        "zipcode": "78217"
+      },
+      "count": 5
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.55002,
+        "longitude": -98.3655,
+        "zipcode": "78233-5307"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Ohio",
+        "city": "Cleveland",
+        "latitude": 41.50473,
+        "longitude": -81.69074,
+        "zipcode": "44114"
+      },
+      "count": 3
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Maryland",
+        "city": "Crownsville",
+        "latitude": 39.02389,
+        "longitude": -76.61838,
+        "zipcode": "21032"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Marcos",
+        "latitude": 29.88608,
+        "longitude": -97.92818,
+        "zipcode": "78666"
+      },
+      "count": 1
+    },
+    { "_id": "other", "count": 258 },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.53241,
+        "longitude": -98.55234,
+        "zipcode": "78230"
+      },
+      "count": 2
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "New Jersey",
+        "city": "Middletown",
+        "latitude": 40.39595,
+        "longitude": -74.13534,
+        "zipcode": "07748-1914"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Mississippi",
+        "city": "Ridgeland",
+        "latitude": 32.43631,
+        "longitude": -90.14914,
+        "zipcode": "39157-2057"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Virginia",
+        "city": "Ashburn",
+        "latitude": 39.01121,
+        "longitude": -77.4712,
+        "zipcode": "20147-6105"
+      },
+      "count": 26
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Connecticut",
+        "city": "Wallingford",
+        "latitude": 41.45701,
+        "longitude": -72.82307,
+        "zipcode": "06492"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.50319,
+        "longitude": -98.38871,
+        "zipcode": "78218"
+      },
+      "count": 10
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Missouri",
+        "city": "Kansas City",
+        "latitude": 39.10344,
+        "longitude": -94.58311,
+        "zipcode": "64105"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "El Paso",
+        "latitude": 31.75916,
+        "longitude": -106.48749,
+        "zipcode": "79901"
+      },
+      "count": 2
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.61613,
+        "longitude": -98.47472,
+        "zipcode": "78258-3999"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Dallas",
+        "latitude": 32.77822,
+        "longitude": -96.79512,
+        "zipcode": "75201"
+      },
+      "count": 3
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.42412,
+        "longitude": -98.49363
+      },
+      "count": 16
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Houston",
+        "latitude": 29.76078,
+        "longitude": -95.36952,
+        "zipcode": "77002"
+      },
+      "count": 3
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.61445,
+        "longitude": -98.52212,
+        "zipcode": "78258"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Kyle",
+        "latitude": 29.98835,
+        "longitude": -97.87736,
+        "zipcode": "78640"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Austin",
+        "latitude": 30.16375,
+        "longitude": -97.79775,
+        "zipcode": "78748"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Houston",
+        "latitude": 29.62111,
+        "longitude": -95.32472,
+        "zipcode": "77048"
+      },
+      "count": 4
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Washington",
+        "city": "Redmond",
+        "latitude": 47.6693,
+        "longitude": -122.1218,
+        "zipcode": "98052-7823"
+      },
+      "count": 14
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Tennessee",
+        "city": "Rogersville",
+        "latitude": 36.40121,
+        "longitude": -83.01775,
+        "zipcode": "37857-2444"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Harlingen",
+        "latitude": 26.18986,
+        "longitude": -97.69555,
+        "zipcode": "78550"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Marcos",
+        "latitude": 29.88877,
+        "longitude": -97.93744,
+        "zipcode": "78666-4684"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Arkansas",
+        "city": "Little Rock",
+        "latitude": 34.78773,
+        "longitude": -92.39809,
+        "zipcode": "72212-2442"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.57759,
+        "longitude": -98.45312,
+        "zipcode": "78232"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "California",
+        "city": "Carlsbad",
+        "latitude": 33.12687,
+        "longitude": -117.26681,
+        "zipcode": "92009-1602"
+      },
+      "count": 2
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Balcones Heights",
+        "latitude": 29.48502,
+        "longitude": -98.54681,
+        "zipcode": "78201"
+      },
+      "count": 2
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "Houston",
+        "latitude": 29.85411,
+        "longitude": -95.39686,
+        "zipcode": "77076-4029"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "",
+        "city": "",
+        "latitude": 38.89037,
+        "longitude": -77.03196,
+        "zipcode": ""
+      },
+      "count": 9
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Texas",
+        "city": "San Antonio",
+        "latitude": 29.42412,
+        "longitude": -98.49363,
+        "zipcode": ""
+      },
+      "count": 31
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Colorado",
+        "city": "Englewood",
+        "latitude": 39.57802,
+        "longitude": -104.85602,
+        "zipcode": "80112-5117"
+      },
+      "count": 1
+    },
+    {
+      "_id": {
+        "continent": "North America",
+        "country": "United States",
+        "state": "Georgia",
+        "city": "Atlanta",
+        "latitude": 33.91396,
+        "longitude": -84.34648,
+        "zipcode": "30319-1418"
+      },
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+:root{
+  /* defines global colors */
+  --color-primary-dark: #000b20;
+  --color-primary: #02225e;
+  --color-primary900: #002b7a;
+  --color-primary800: #003f92;
+  --color-primary700: #0053a6;
+  --color-primary600: #0067b9;
+  --color-primary500: #007bcd;
+  --color-primary400: #0090e0;
+  --color-primary300: #00a4f3;
+  --color-primary200: #00b8ff;
+  --color-primary100: #00ccff;
+  --color-primary50: #b9f7ff;
+  --color-secondary800: #b30000;
+  --color-secondary700: #cc0000;
+  --color-secondary600: #e60000;
+  --color-secondary500: #ff0000;
+  --color-secondary400: #ff1919;
+  --color-secondary300: #ff3333;
+  --color-secondary200: #ff4d4d;
+  --color-secondary100: #ff6666;
+  --color-primary-muted: #a19f9f;
+  --color-primary-muted-rgb: 77, 77, 77;
+  
+  /* rgb values */
+  --color-primary-dark-rgb: 0, 11, 32;
+  --color-primary-rgb: 2, 34, 94;
+  --color-primary900-rgb: 0, 43, 122;
+  --color-primary800-rgb: 0, 63, 146;
+  --color-primary700-rgb: 0, 83, 166;
+  --color-primary600-rgb: 0, 103, 185;
+  --color-primary500-rgb: 0, 123, 205;
+  --color-primary400-rgb: 0, 144, 224;
+  --color-primary300-rgb: 0, 164, 243;
+  --color-primary200-rgb: 0, 184, 255;
+  --color-primary100-rgb: 0, 204, 255;
+  --color-primary50-rgb: 0, 224, 255;
+  --color-secondary800-rgb: 179, 0, 0;
+  --color-secondary700-rgb: 204, 0, 0;
+  --color-secondary600-rgb: 230, 0, 0;
+  --color-secondary500-rgb: 255, 0, 0;
+  --color-secondary400-rgb: 255, 25, 25;
+  --color-secondary300-rgb: 255, 51, 51;
+  --color-secondary200-rgb: 255, 77, 77;
+  --color-secondary100-rgb: 255, 102, 102;
+  /* font sizes */
+  --font-size-xxs: 0.5rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-xxl: 1.5rem;
+  --font-size-xxxl: 2rem;
+  --font-size-xxxxl: 3rem;
+  /* font weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  /* font families */
+  --font-family-primary: 'Roboto', sans-serif;
+  --font-family-secondary: 'Montserrat', sans-serif;
+
+}
+
+*{
+  /* set box-sizing to border-box */
+  box-sizing: border-box;
+}
+
+.bold{
+  font-weight: var(--font-weight-bold);
+}
+a {
+  text-decoration: none;
+  /* inherit color from whatever is displaying it */
+  color: inherit;
+}
+/* set html, body background defaults */
+html, body {
+  /* use a dark linear gradient with blue colors */
+  background-image: linear-gradient(120deg, #0c0c0c 0%, var(--color-primary-dark) 100%);
+  color: var(--color-primary500);
+  font-family: var(--font-family-primary);
+  position: relative;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s ease-in-out;
+}
+::-webkit-scrollbar-button:single-button:vertical:decrement {
+  border-color: transparent transparent #9b6a2f transparent;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+  border-color: transparent transparent white transparent;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment {
+  border-color: #9b6a2f transparent transparent transparent;
+}
+
+::-webkit-scrollbar-button:single-button:vertical:increment:hover {
+  border-color: white transparent transparent transparent;
+}
+::-webkit-scrollbar-thumb {
+  border: 1px solid rgba(0, 0, 0, 0.017);
+  background-color: rgba(215, 215, 215, 0.37);
+
+  border-radius: 12px 12px 12px 12px;
+  margin: 0px auto;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary100);
+}
+::-webkit-scrollbar-thumb:active {
+  background: var(--color-primary100);
+}

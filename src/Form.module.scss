@@ -1,0 +1,88 @@
+@import '@/globals.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  &__input {
+    // border: 1px solid var(--color-primary500);
+    color: inherit;
+    height: 100%;
+    border-radius: 5px;
+    width: 100%;
+    &:focus {
+      outline: none;
+    }
+  }
+  &__inputGroup {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+  }
+  &__label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+
+    @include mobile {
+      font-size: 1rem;
+    }
+  }
+  &__error {
+    color: red;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  &__textarea {
+    resize: vertical;
+    max-height: 150px;
+    width: 100%;
+  }
+  &__buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+  &__button {
+    background-color: var(--color-primary500);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px;
+    width: 90%;
+    &:hover {
+      transition: all 0.3s ease-in-out;
+      width: 100%;
+      cursor: pointer;
+      background-color: var(--color-primary600);
+    }
+  }
+  &__clearInput {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    &:hover {
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      color: var(--color-primary600);
+    }
+  }
+  &__formGroup {
+    display: flex;
+    gap: 10px; 
+  }
+  &__formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: white;
+    padding: 2%;
+    border-radius: 10px;
+  }
+}
