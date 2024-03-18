@@ -40,6 +40,7 @@ const InventoryDetails = () => {
   const { data, isFetching, isLoading, error, isError } = useFetchData({
     url: `/inventory/${id}`,
     key: 'inventoryDetails',
+    enabled: !!id,
   });
 
   const onFinish = (values: any) => {

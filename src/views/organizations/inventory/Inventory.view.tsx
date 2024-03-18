@@ -4,9 +4,11 @@ import styles from './Inventory.module.scss';
 import SearchWrapper from '@/layout/searchWrapper/SearchWrapper.layout';
 import useFetchData from '@/state/useFetchData';
 import { useUser } from '@/state/auth';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaTrash } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { Button, Table, Tag } from 'antd';
+import { Button, Modal, Table, Tag } from 'antd';
+import { IoOpenSharp } from 'react-icons/io5';
+import useRemoveData from '@/state/useRemoveData';
 
 type Props = {};
 
@@ -18,6 +20,23 @@ const InventoryView = (props: Props) => {
     key: 'inventory',
   });
 
+  const { mutate: deleteInventory } = useRemoveData({
+    queriesToInvalidate: ['inventory'],
+    successMessage: 'Inventory removed successfully',
+  });
+
+  const handleDelete = (id: string) => {
+    Modal.confirm({
+      title: 'Are you sure you want to delete this inventory?',
+      content: 'This action cannot be undone',
+      onOk() {
+        deleteInventory({ url: `/inventory/${id}` });
+      },
+      onCancel() {
+        return;
+      },
+    });
+  };
   return (
     <div className={styles.container}>
       <SearchWrapper
@@ -70,7 +89,9 @@ const InventoryView = (props: Props) => {
               title: 'Unlimited Stock',
               dataIndex: 'unlimitedStock',
               key: 'unlimitedStock',
-              render: (text, record) => <>{record?.unlimitedStock ? 'Yes' : 'No'}</>,
+              render: (text, record) => (
+                <>{record?.unlimitedStock ? 'Yes' : 'No'}</>
+              ),
             },
             {
               title: 'Category',
@@ -105,13 +126,22 @@ const InventoryView = (props: Props) => {
               dataIndex: 'actions',
               key: 'actions',
               render: (text, record) => (
-                <Button
-                  onClick={() => {
-                    router.push(`/organization/inventory/${record._id}`);
-                  }}
-                >
-                  View
-                </Button>
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <Button
+                    onClick={() => {
+                      router.push(`/organization/inventory/${record._id}`);
+                    }}
+                  >
+                    <IoOpenSharp />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      handleDelete(record._id);
+                    }}
+                  >
+                    <FaTrash style={{ color: 'red' }} />
+                  </Button>
+                </div>
               ),
             },
           ]}
