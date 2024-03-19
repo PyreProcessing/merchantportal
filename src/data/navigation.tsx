@@ -20,6 +20,12 @@ export const navigation = (options?: {
           link: '/home',
           icon: <RiHome2Fill />,
         },
+        order: {
+          title: 'Orders',
+          link: '/home/order',
+          icon: <HiOutlineChartSquareBar />,
+        },
+
         // deposits: {
         //   title: 'Deposits',
         //   link: '/home/deposits',

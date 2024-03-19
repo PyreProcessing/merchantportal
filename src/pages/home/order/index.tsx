@@ -1,9 +1,9 @@
 import { navigation } from '@/data/navigation';
 import PageLayout from '@/layout/page/Page.layout';
-import DashboardView from '@/views/home/dashboard/Dashboard.view';
+import OrderList from '@/views/home/order/OrderList.view';
 import Head from 'next/head';
 
-const Dashboard = () => {
+const Order = () => {
   return (
     <>
       <Head>
@@ -14,10 +14,10 @@ const Dashboard = () => {
       </Head>
 
       <PageLayout pages={[navigation().home.links.home]} largeSideBar={true}>
-        <DashboardView />
+        <OrderList />
       </PageLayout>
     </>
   );
 };
 
-export default Dashboard;
+export default Order;
