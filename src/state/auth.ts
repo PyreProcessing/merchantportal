@@ -14,7 +14,7 @@ const fetchUserData = async (token?: string) => {
 };
 
 const updateUser = async (data: any) => {
-  const { data: userData } = await axios.put('/user', data);
+  const { data: userData } = await axios.put('/agent', data);
 
   return userData;
 };
@@ -76,8 +76,8 @@ export const useUpdateUser = () => {
  * @returns
  */
 export const fetchUserDetails = async (id: string) => {
-  const { data } = await axios.get(`/user/${id}`);
-  return data.user;
+  const { data } = await axios.get(`/agent/${id}`);
+  return data.payload;
 };
 
 export const useUserDetails = (id: string) => {

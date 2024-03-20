@@ -1,7 +1,7 @@
 import { Navigation } from '@/types/navigation';
 import { RiHome2Fill } from 'react-icons/ri';
 import { HiOutlineChartSquareBar } from 'react-icons/hi';
-import { MdAttachMoney } from 'react-icons/md';
+import { MdAttachMoney, MdSettings } from 'react-icons/md';
 import { FaStore, FaUsers } from 'react-icons/fa';
 import checkRole from '@/utils/checkRole';
 
@@ -53,16 +53,16 @@ export const navigation = (options?: {
         },
       },
     },
-    // account: {
-    //   title: 'Account',
-    //   links: {
-    //     settings: {
-    //       title: 'Account Settings',
-    //       link: '/account/settings',
-    //       icon: <MdSettings />,
-    //     },
-    //   },
-    // },
+    account: {
+      title: 'Account',
+      links: {
+        settings: {
+          title: 'Account Settings',
+          link: '/account/settings',
+          icon: <MdSettings />,
+        },
+      },
+    },
   };
 
   return navigation;

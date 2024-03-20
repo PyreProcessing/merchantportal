@@ -13,21 +13,22 @@ import {
 import { useEffect } from 'react';
 
 import styles from './SettingsForm.module.scss';
+import PhotoUpload from '@/components/photoUpload/PhotoUpload.component';
 
-type Props = {};
+type Props = {
+  photoForm: any;
+};
 
 const SettingsForm = (props: Props) => {
   const [passwordForm] = Form.useForm();
 
   const { mutate: updateUser } = useUpdateUser();
   const onFinishChangePassword = (values: any) => {
-    console.log(values);
-
     if (values.password != values.confirmNewPassword)
       return message.error('Passwords do not match');
-
     updateUser(values);
   };
+
   const openChangePasswordModal = () => {
     Modal.info({
       title: 'Change Password',
@@ -59,6 +60,43 @@ const SettingsForm = (props: Props) => {
 
   return (
     <>
+      <div className={styles.group}>
+        <h1 className={styles.header}>Business Details</h1>
+        <div className={styles.columnContainer}>
+          <div className={styles.container}>
+            <Form.Item label="Business Name" name="businessName">
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Logo Url"
+              name="businessLogoUrl"
+              tooltip="https link of the logo location, you can also paste your own link here, and the logo will be used"
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item label="Business Description" name="businessDescription">
+              <Input.TextArea />
+            </Form.Item>
+          </div>
+          <div className={styles.container}>
+            <div className={styles.imageUploadContainer}>
+              <div className={styles.imageContainer}>
+                <PhotoUpload
+                  listType="picture-card"
+                  isAvatar={false}
+                  label="Buisness Logo"
+                  tooltip="This is the logo that will be displayed on your business page. It should be a square image. The recommended size is 200x200 pixels."
+                  name="businessLogoUrl"
+                  aspectRatio={1}
+                  form={props.photoForm}
+                  action={`${process.env.API_URL}/upload`}
+                  default={props.photoForm.getFieldsValue().businessLogoUrl}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className={styles.group}>
         <h1 className={styles.header}>Account Details</h1>
         <div className={styles.side}>
@@ -102,28 +140,10 @@ const SettingsForm = (props: Props) => {
         <h1 className={styles.header}>Account Customization</h1>
         <div className={styles.side}>
           <Form.Item
-            tooltip="If this is enabled, all of the videos you upload will be saved to your account without a deletion date."
-            label="Disable Automatic Deletion of Videos"
-            className={styles.switch}
-            name="saveAllVideos"
-            valuePropName="checked"
-          >
-            <Switch />
-          </Form.Item>
-          <Form.Item
             tooltip="If this is enabled, you will not receive emails from us, including video notifications."
             label="Unsubscribe from emails"
             className={styles.switch}
             name="unsubscribeFromEmails"
-            valuePropName="checked"
-          >
-            <Switch />
-          </Form.Item>
-          <Form.Item
-            tooltip="If this is enabled, your profile will not be visible to other users."
-            label="Hide my profile"
-            name={'hiddenChannel'}
-            className={styles.switch}
             valuePropName="checked"
           >
             <Switch />

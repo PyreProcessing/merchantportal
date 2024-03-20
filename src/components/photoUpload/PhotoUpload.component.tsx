@@ -30,6 +30,7 @@ type Props = {
   isAvatar?: boolean;
   imgStyle?: React.CSSProperties;
   form: FormInstance;
+  aspectRatio?: number;
 };
 
 const PhotoUpload = (props: Props) => {
@@ -90,7 +91,7 @@ const PhotoUpload = (props: Props) => {
       >
         <Cropper
           cropShape={props.isAvatar ? 'round' : 'rect'}
-          aspect={props.isAvatar ? 1 : 16 / 9}
+          aspect={props.aspectRatio ?? 16 / 9}
           beforeCrop={beforeUpload}
         >
           <Upload

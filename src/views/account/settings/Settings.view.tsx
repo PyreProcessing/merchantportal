@@ -39,10 +39,10 @@ const SettingsView = (props: Props) => {
       lastName: userDetails?.lastName,
       email: userDetails?.email,
       phoneNumber: userDetails?.phoneNumber,
-      sex: userDetails?.sex,
-      saveAllVideos: userDetails?.saveAllVideos,
-      unsubscribeFromEmails: userDetails?.unsubscribeFromEmails,
-      hiddenChannel: userDetails?.hiddenChannel,
+      sex: userDetails?.sex, 
+      businessLogoUrl: userDetails?.businessLogoUrl,
+      businessName: userDetails?.businessName,
+      businessDescription: userDetails?.businessDescription,
     });
   }, [userDetails]);
 
@@ -59,7 +59,7 @@ const SettingsView = (props: Props) => {
         }}
       >
         <Container title="Settings">
-          {isLoading ? <Loader /> : <SettingsForm />}
+          {isLoading ? <Loader /> : <SettingsForm photoForm={form}/>}
         </Container>
         <SaveButton isLoading={userUpdateIsLoading} />
       </Form>
