@@ -1,4 +1,4 @@
-import { useUpdateUser, useUser } from '@/state/auth';
+import { useUpdateUser, useUser, useUserDetails } from '@/state/auth';
 import phoneNumber from '@/utils/phoneNumber';
 import {
   Button,
@@ -10,10 +10,10 @@ import {
   Radio,
   Switch,
 } from 'antd';
-import { useEffect } from 'react';
 
 import styles from './SettingsForm.module.scss';
 import PhotoUpload from '@/components/photoUpload/PhotoUpload.component';
+import checkRole from '@/utils/checkRole';
 
 type Props = {
   photoForm: any;
@@ -21,8 +21,9 @@ type Props = {
 
 const SettingsForm = (props: Props) => {
   const [passwordForm] = Form.useForm();
-
   const { mutate: updateUser } = useUpdateUser();
+  const { data: loggedInData, error, isLoading } = useUser();
+  const { data: userDetails } = useUserDetails(loggedInData?.user._id);
   const onFinishChangePassword = (values: any) => {
     if (values.password != values.confirmNewPassword)
       return message.error('Passwords do not match');
@@ -61,41 +62,53 @@ const SettingsForm = (props: Props) => {
   return (
     <>
       <div className={styles.group}>
-        <h1 className={styles.header}>Business Details</h1>
-        <div className={styles.columnContainer}>
-          <div className={styles.container}>
-            <Form.Item label="Business Name" name="businessName">
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Logo Url"
-              name="businessLogoUrl"
-              tooltip="https link of the logo location, you can also paste your own link here, and the logo will be used"
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item label="Business Description" name="businessDescription">
-              <Input.TextArea />
-            </Form.Item>
-          </div>
-          <div className={styles.container}>
-            <div className={styles.imageUploadContainer}>
-              <div className={styles.imageContainer}>
-                <PhotoUpload
-                  listType="picture-card"
-                  isAvatar={false}
-                  label="Buisness Logo"
-                  tooltip="This is the logo that will be displayed on your business page. It should be a square image. The recommended size is 200x200 pixels."
-                  name="businessLogoUrl"
-                  aspectRatio={1}
-                  form={props.photoForm}
-                  action={`${process.env.API_URL}/upload`}
-                  default={props.photoForm.getFieldsValue().businessLogoUrl}
-                />
+        {
+          // if the user has the role of merchant, show the business details
+          checkRole(loggedInData?.user?.role, ['merchant']) && (
+            <>
+              <h1 className={styles.header}>Business Details</h1>
+              <div className={styles.columnContainer}>
+                <div className={styles.container}>
+                  <Form.Item label="Business Name" name="businessName">
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="Logo Url"
+                    name="businessLogoUrl"
+                    tooltip="https link of the logo location, you can also paste your own link here, and the logo will be used"
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    label="Business Description"
+                    name="businessDescription"
+                  >
+                    <Input.TextArea />
+                  </Form.Item>
+                </div>
+                <div className={styles.container}>
+                  <div className={styles.imageUploadContainer}>
+                    <div className={styles.imageContainer}>
+                      <PhotoUpload
+                        listType="picture-card"
+                        isAvatar={false}
+                        label="Buisness Logo"
+                        tooltip="This is the logo that will be displayed on your business page. It should be a square image. The recommended size is 200x200 pixels."
+                        name="businessLogoUrl"
+                        aspectRatio={1}
+                        form={props.photoForm}
+                        action={`${process.env.API_URL}/upload`}
+                        default={
+                          props.photoForm.getFieldsValue().businessLogoUrl
+                        }
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
+            </>
+          )
+        }
       </div>
       <div className={styles.group}>
         <h1 className={styles.header}>Account Details</h1>
