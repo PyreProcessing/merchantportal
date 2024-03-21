@@ -109,6 +109,11 @@ const OrderList = () => {
                       Processing
                     </Tag>
                   ),
+                  success: (
+                    <Tag color="success" key={record._id}>
+                      Success
+                    </Tag>
+                  ),
                 }[record.status] ?? (
                   <Tag color="default" key={record._id}>
                     Unknown
@@ -143,7 +148,7 @@ const OrderList = () => {
                 <div style={{ display: 'flex', gap: '10px' }}>
                   <Button
                     onClick={() => {
-                      router.push(`/organization/inventory/${record._id}`);
+                      router.push(`/home/order/${record._id}`);
                     }}
                   >
                     <IoOpenSharp />
