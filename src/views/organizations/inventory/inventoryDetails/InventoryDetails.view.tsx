@@ -177,8 +177,9 @@ const InventoryDetails = () => {
                 name="outOfStock"
                 rules={[]}
                 tooltip="This is the out of stock status of your product. It is used to manage your inventory. Marking the product as out of stock will prevent customers from purchasing the product."
+                valuePropName='checked'
               >
-                <Switch checkedChildren="Yes" unCheckedChildren="No" />
+                <Switch checkedChildren="Yes" unCheckedChildren="No"  />
               </Form.Item>
             </div>
             <div className={formStyles.form__inputGroup}>
@@ -187,6 +188,7 @@ const InventoryDetails = () => {
                 name="unlimitedStock"
                 rules={[]}
                 tooltip="This helps with the stock management of your product. Marking the product as unlimited stock will prevent the product from going out of stock. This is mainly used for digital products."
+                valuePropName='checked'
               >
                 <Switch checkedChildren="Yes" unCheckedChildren="No" />
               </Form.Item>
@@ -197,6 +199,7 @@ const InventoryDetails = () => {
                 name="productVisibility"
                 rules={[]}
                 tooltip="This is the visibility of your product. It is used to manage your inventory. Marking the product as invisible will prevent customers from seeing the product."
+                valuePropName='checked'
               >
                 <Switch
                   checkedChildren="Invisibile"
@@ -210,8 +213,9 @@ const InventoryDetails = () => {
                 name="requiresShipping"
                 rules={[]}
                 tooltip="products that require shipping will be charged differently from products that do not require shipping. If you have a physical product, you should mark it as requiring shipping. If you have a digital product, you should mark it as not requiring shipping."
+                valuePropName='checked'
               >
-                <Switch checkedChildren="Yes" unCheckedChildren="No" />
+                <Switch checkedChildren="Yes" unCheckedChildren="No"  />
               </Form.Item>
             </div>
           </div>
@@ -362,10 +366,9 @@ const InventoryDetails = () => {
               >
                 <Select
                   mode="tags"
-                  placeholder="Related Products"
+                  placeholder="Meta Keywords"
                   allowClear
-                  tokenSeparators={[',']}
-                  disabled
+                  tokenSeparators={[',']} 
                 />
               </Form.Item>
             </div>

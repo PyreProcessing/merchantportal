@@ -79,7 +79,8 @@ const OrderList = () => {
               key: 'amount',
               render: (text, record) => (
                 <div>
-                  {record.amount.toFixed(2)} {record.currency}
+                  ${record.orderInformation.total.toFixed(2)}{' '}
+                  {record.orderInformation.currency}
                 </div>
               ),
             },
@@ -114,7 +115,12 @@ const OrderList = () => {
                       Success
                     </Tag>
                   ),
-                }[record.status] ?? (
+                  cancelled: (
+                    <Tag color="default" key={record._id}>
+                      Cancelled
+                    </Tag>
+                  ),
+                }[record.status as any] ?? (
                   <Tag color="default" key={record._id}>
                     Unknown
                   </Tag>
@@ -152,13 +158,6 @@ const OrderList = () => {
                     }}
                   >
                     <IoOpenSharp />
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      handleDelete(record._id);
-                    }}
-                  >
-                    <FaTrash style={{ color: 'red' }} />
                   </Button>
                 </div>
               ),

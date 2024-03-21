@@ -28,29 +28,40 @@
   .detailsContainer {
     display: flex;
     justify-content: space-between;
-    .helpContainer{
+    .helpContainer {
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-    button{
+    button {
       width: 100%;
     }
   }
 }
 
-.danger{
+.danger {
   background-color: rgb(245, 53, 53);
 
-  &:hover{
+  &:hover {
     background-color: rgb(206, 44, 44) !important;
+    &:disabled {
+      background-color: none !important;
+    }
+  }
+
+  // target hover while disabled
+  &:disabled:hover {
+    background-color: none !important;
   }
 }
 
-.info{
+.info {
   background-color: rgb(51, 157, 255);
 
-  &:hover{
+  &:hover {
     background-color: rgb(40, 126, 207) !important;
-  }
+    &:disabled {
+      background-color: none !important;
+    }
+  } // target hover while disabled
 }
