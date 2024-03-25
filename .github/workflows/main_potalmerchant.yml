@@ -21,6 +21,12 @@ jobs:
         with:
           node-version: '20.x'
 
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm run build --if-present
+          npm run test --if-present
+
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -36,10 +42,9 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
     permissions:
       id-token: write #This is required for requesting the JWT
-      
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
@@ -48,19 +53,13 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
-
+      
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_D98D0A17ABC64B82A88D4D85BA6ACB8F }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_65A64BBA3F2642BC8A92391587D10D2A }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_CD5D172C38ED4EC784E1C5C37D9E9A25 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_7CB3D336C26547D5BFCA40A4A6343159 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_8B2C0302B4C84CA58726F55C01BA38C6 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_BC9CD1D5638840D9A9E9C9F41BE99338 }}
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
@@ -69,3 +68,4 @@ jobs:
           app-name: 'potalmerchant'
           slot-name: 'Production'
           package: .
+          
