@@ -20,6 +20,7 @@ import usePostData from '@/state/usePostData';
 import useUpdateData from '@/state/useUpdateData';
 import { useUser } from '@/state/auth';
 import useRemoveData from '@/state/useRemoveData';
+import calcPrice from '@/utils/calcPrice';
 
 const OrderDetails = () => {
   const router = useRouter();
@@ -130,7 +131,46 @@ const OrderDetails = () => {
           pagination={false}
           rowKey={(record) => record._id}
         />
-        <Divider orientation="left">Order Summary</Divider>
+        <Divider orientation="left">Misc. Information</Divider>
+        <div className={styles.subContainer}>
+          <div className={styles.detailsContainer}>
+            <h3>Created At</h3>
+            <span>
+              {moment(order.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
+            </span>
+          </div>
+          <div className={styles.detailsContainer}>
+            <h3>Updated At</h3>
+            <span>
+              {moment(order.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}
+            </span>
+          </div>
+          {/* shipping infromation, date shipped, tracking info etc */}
+          <div className={styles.detailsContainer}>
+            <h3>Shipped</h3>
+            <span>
+              {order.shipped ? (
+                <>
+                  <Tag color="green">Shipped</Tag>
+                  <Tooltip title="Date shipped">
+                    <span>
+                      {moment(order.shippedDate).format(
+                        'MMMM Do YYYY, h:mm:ss a'
+                      )}
+                    </span>
+                  </Tooltip>
+                </>
+              ) : (
+                <Tag color="red">Not Shipped</Tag>
+              )}
+            </span>
+          </div>
+          <div className={styles.detailsContainer}>
+            <h3>Tracking Number</h3>
+            <span>{order.trackingNumber ?? 'N/A'}</span>
+          </div>
+        </div>
+        <Divider orientation="center">Order Summary</Divider>
         <div className={styles.subContainer}>
           <div className={styles.detailsContainer}>
             <div className={styles.helpContainer}>
@@ -140,7 +180,17 @@ const OrderDetails = () => {
                 size={12}
               />
             </div>
-            <p>${order.orderInformation?.total.toFixed(2)}</p>
+            <p>${order.orderInformation?.subTotal?.toFixed(2)}</p>
+          </div>
+          <div className={styles.detailsContainer}>
+            <div className={styles.helpContainer}>
+              <h3>Fee</h3>
+              <HelpIcon
+                tooltip="Any Fee's applied to the order as defined by the merchant"
+                size={12}
+              />
+            </div>
+            <p>${order.orderInformation?.fee?.toFixed(2) ?? '0.00'}</p>
           </div>
           <div className={styles.detailsContainer}>
             <div className={styles.helpContainer}>
@@ -165,14 +215,14 @@ const OrderDetails = () => {
                 size={12}
               />
             </div>
-            <p>${order.orderInformation?.total.toFixed(2)}</p>
+            <p>${order.orderInformation?.total}</p>
           </div>
         </div>
         <Divider orientation="left">Payment Details</Divider>
         <div className={styles.subContainer}>
           <div className={styles.detailsContainer}>
             <h3>Payment Method</h3>
-            <span>Card - XXXX-XXXX-XXXX-{order.last4}</span>
+            <span>Card - XXXX-XXXX-XXXX-{order?.orderInformation?.last4}</span>
           </div>
           <div className={styles.detailsContainer}>
             <h3>Transaction ID</h3>
@@ -208,7 +258,7 @@ const OrderDetails = () => {
             <div className={styles.subContainer}>
               <div className={styles.detailsContainer}>
                 <h3>Address</h3>
-                <span>{order.shippingAddress?.address}</span>
+                {order.shippingAddress?.line1} {order.shippingAddress?.line2}
               </div>
               <div className={styles.detailsContainer}>
                 <h3>City</h3>
