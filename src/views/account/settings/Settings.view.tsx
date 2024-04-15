@@ -39,14 +39,14 @@ const SettingsView = (props: Props) => {
       lastName: userDetails?.lastName,
       email: userDetails?.email,
       phoneNumber: userDetails?.phoneNumber,
-      sex: userDetails?.sex, 
+      sex: userDetails?.sex,
       businessLogoUrl: userDetails?.businessLogoUrl,
       businessName: userDetails?.businessName,
       businessDescription: userDetails?.businessDescription,
     });
   }, [userDetails]);
 
-  if (userError) return <Error error={error} />;
+  if (userError) return <Error error={userErrorDetails} />;
 
   return (
     <div className={styles.container}>
@@ -59,9 +59,9 @@ const SettingsView = (props: Props) => {
         }}
       >
         <Container title="Settings">
-          {isLoading ? <Loader /> : <SettingsForm photoForm={form}/>}
+          {userLoadingDetails ? <Loader /> : <SettingsForm photoForm={form} />}
         </Container>
-        <SaveButton isLoading={userUpdateIsLoading} />
+        <SaveButton isLoading={userUpdateIsLoading} isDisabled={userLoadingDetails}/>
       </Form>
     </div>
   );

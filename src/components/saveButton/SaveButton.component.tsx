@@ -3,6 +3,7 @@ import styles from './SaveButton.module.scss';
 
 type Props = {
   isLoading?: boolean;
+  isDisabled?: boolean;
 };
 
 const SaveButton = (props: Props) => {
@@ -12,6 +13,7 @@ const SaveButton = (props: Props) => {
       htmlType="submit"
       className={styles.save}
       loading={props.isLoading}
+      disabled={props.isDisabled}
     >
       Save
     </Button>
