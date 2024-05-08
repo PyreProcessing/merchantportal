@@ -19,7 +19,6 @@ const fetchData = async (options?: {
   const { data } = await axios.get(
     `${options?.url}?keyword=${keyword}&pageNumber=${pageNumber}&limit=${pageLimit}&filterOptions=${filter}&sortBy=${sort}`
   );
-  console.log(data);
   return data;
 };
 
@@ -38,6 +37,7 @@ const fetchData = async (options?: {
 export default (options?: {
   key: string;
   url?: string;
+  refetchOnWindowFocus?: boolean;
   enabled?: boolean;
   keyword?: string;
   pageNumber?: number;
@@ -65,6 +65,7 @@ export default (options?: {
       retry: 1,
       onError: options?.onError,
       enabled: options?.enabled,
+      refetchOnWindowFocus: options?.refetchOnWindowFocus || false,
     }
   );
   return query;

@@ -1,11 +1,13 @@
-import InventoryType from "./InventoryType";
+import InventoryType from './InventoryType';
+import UserType from './UserType';
 
 export default interface OrderType {
   _id: string;
-  merchant: string;
-  agent: string; // this is the agent that the merchant belongs to
-  transactionId?: string;
+  merchant: UserType; // this is the merchant that the order belongs to
+  agent: UserType; // this is the agent that the merchant belongs to
+  transactionId: string;
   orderInformation: {
+    subTotal: number;
     total: number;
     tax?: number;
     shipping?: number;
@@ -45,7 +47,7 @@ export default interface OrderType {
     zipcode: string;
     country: string;
   };
-
+  paymentProcessor: string;
   createdAt: Date;
   updatedAt: Date;
 }

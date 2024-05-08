@@ -41,7 +41,7 @@ const OrderDetails = () => {
   });
 
   const { mutate: voidOrder } = usePostData({
-    url: `/order/${router.query.id}/void`,
+    url: `/transaction/${data?.payload?.data.paymentProcessor}/${router.query.id}/void`,
     key: 'voidOrder',
     queriesToInvalidate: ['orderDetails'],
     successMessage: 'Order voided successfully',
@@ -54,7 +54,7 @@ const OrderDetails = () => {
   });
 
   const { mutate: refundOrder } = usePostData({
-    url: `/order/${router.query.id}/refund`,
+    url: `/transaction/${data?.payload?.data.paymentProcessor}/${router.query.id}/refund`,
     key: 'refundOrder',
     queriesToInvalidate: ['orderDetails'],
     successMessage: 'Order refunded successfully',
@@ -332,12 +332,11 @@ const OrderDetails = () => {
                 disabled={
                   // if order is shipped or order status is success
                   order.shipped ||
-                  order.status === 'success' ||
-                  order.status === 'cancelled'
+                  /^(cancelled|refunded|processing)$/.test(order.status)
                 }
                 onClick={() =>
                   markAsShipped({
-                    url: `/order/${order._id}/mark-as-shipped`,
+                    url: `/transaction/${order.paymentProcessor}/${order._id}/mark-as-shipped`,
                     formData: {
                       shipped: true,
                       shippedDate: new Date().toISOString(),
@@ -358,7 +357,7 @@ const OrderDetails = () => {
                   // if order created at date is older than 10 minutes
                   moment(order.createdAt).isBefore(
                     moment().subtract(10, 'minutes')
-                  ) || order.status === 'cancelled'
+                  ) || /^(cancelled|refunded)$/.test(order.status)
                 }
                 onClick={() => voidOrder({})}
                 className={styles.danger}
@@ -373,7 +372,7 @@ const OrderDetails = () => {
                 onClick={() => refundOrder({})}
                 disabled={
                   // if order status is not success
-                  order.status !== 'success' || order.status === 'cancelled'
+                  /^(cancelled|refunded|processing)$/.test(order.status)
                 }
               >
                 Refund

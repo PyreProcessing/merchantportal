@@ -4,11 +4,12 @@ import styles from './Inventory.module.scss';
 import SearchWrapper from '@/layout/searchWrapper/SearchWrapper.layout';
 import useFetchData from '@/state/useFetchData';
 import { useUser } from '@/state/auth';
-import { FaPlus, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
 import { useRouter } from 'next/router';
-import { Button, Modal, Table, Tag } from 'antd';
+import { Button, Modal, Table, Tag, Tooltip, message } from 'antd';
 import { IoOpenSharp } from 'react-icons/io5';
 import useRemoveData from '@/state/useRemoveData';
+import { encryptData } from '@/utils/encryptData';
 
 type Props = {};
 
@@ -132,8 +133,23 @@ const InventoryView = (props: Props) => {
                       router.push(`/organization/inventory/${record._id}`);
                     }}
                   >
-                    <IoOpenSharp />
+                    <FaEdit />
                   </Button>
+                  <Tooltip title="get a shareable link to this product">
+                    <Button
+                      onClick={() => {
+                        navigator.clipboard.writeText(
+                          `https://payment.pyreprocessing.com/product/nmi/${
+                            //URL encode the encrypted data
+                            encodeURIComponent(encryptData(record._id))
+                          }`
+                        );
+                        message.success('Copied to clipboard');
+                      }}
+                    >
+                      <IoOpenSharp />
+                    </Button>
+                  </Tooltip>
                   <Button
                     onClick={() => {
                       handleDelete(record._id);
