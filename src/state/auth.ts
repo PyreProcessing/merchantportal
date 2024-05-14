@@ -97,6 +97,6 @@ export const logout = () => {
   localStorage.removeItem('token');
   window.location.href =
     process.env.ENV !== 'development'
-      ? `https://auth.pyreprocessing.com?logout=true`
-      : `http://localhost:3003?logout=true`;
+      ? `&redirect=https://merchant.pyreprocessing.com`
+      : `http://localhost:3000`;
 };
