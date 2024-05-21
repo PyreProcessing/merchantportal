@@ -69,19 +69,22 @@ const SettingsForm = (props: Props) => {
               <h1 className={styles.header}>Business Details</h1>
               <div className={styles.columnContainer}>
                 <div className={styles.container}>
-                  <Form.Item label="Business Name" name="businessName">
+                  <Form.Item
+                    label="Business Name"
+                    name={['businessInfo', 'name']}
+                  >
                     <Input />
                   </Form.Item>
                   <Form.Item
                     label="Logo Url"
-                    name="businessLogoUrl"
+                    name={['businessInfo', 'logoUrl']}
                     tooltip="https link of the logo location, you can also paste your own link here, and the logo will be used"
                   >
                     <Input />
                   </Form.Item>
                   <Form.Item
-                    label="Business Description"
-                    name="businessDescription"
+                    label="Business Description or mission statement"
+                    name={['businessInfo', 'missionStatement']}
                   >
                     <Input.TextArea />
                   </Form.Item>
@@ -94,12 +97,12 @@ const SettingsForm = (props: Props) => {
                         isAvatar={false}
                         label="Buisness Logo"
                         tooltip="This is the logo that will be displayed on your business page. It should be a square image. The recommended size is 200x200 pixels."
-                        name="businessLogoUrl"
-                        aspectRatio={1}
+                        name={['businessInfo', 'logoUrl']}
+                        aspectRatio={16 / 9}
                         form={props.photoForm}
                         action={`${process.env.API_URL}/upload`}
                         default={
-                          props.photoForm.getFieldsValue().businessLogoUrl
+                          props.photoForm.getFieldsValue().businessInfo?.logoUrl
                         }
                       />
                     </div>

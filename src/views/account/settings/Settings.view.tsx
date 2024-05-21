@@ -40,9 +40,7 @@ const SettingsView = (props: Props) => {
       email: userDetails?.email,
       phoneNumber: userDetails?.phoneNumber,
       sex: userDetails?.sex,
-      businessLogoUrl: userDetails?.businessLogoUrl,
-      businessName: userDetails?.businessName,
-      businessDescription: userDetails?.businessDescription,
+      businessInfo: userDetails?.businessInfo,
     });
   }, [userDetails]);
 

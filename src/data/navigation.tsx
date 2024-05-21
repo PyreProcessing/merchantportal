@@ -51,6 +51,11 @@ export const navigation = (options?: {
           link: '/organization/inventory',
           icon: <FaStore />,
         },
+        service_page: {
+          title: 'Service Page',
+          link: '/organization/service-page',
+          icon: <FaStore />,
+        },
       },
     },
     account: {

@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .subContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    .button {
+      width: 100%;
+    }
+  }
+  .addIcon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border-radius: 50%;
+    background-color: var(--color-primary700);
+    color: white;
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-primary900);
+    }
+  }
+}

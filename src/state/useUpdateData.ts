@@ -11,6 +11,7 @@ import { useRouter } from 'next/router';
  * @todo add types
  */
 const updateFormData = async (url: string, formData: any) => {
+  console.log(formData);
   const { data } = await axios.put(url, formData);
   return data;
 };
@@ -22,6 +23,8 @@ export default (options: {
   queriesToInvalidate?: string[];
   successMessage?: string;
   redirectUrl?: string;
+  onSuccessCallback?: (data: any) => void;
+  onErrorCallback?: (error: Error) => void;
 }) => {
   const router = useRouter();
   const queryClient = useQueryClient();
@@ -34,9 +37,17 @@ export default (options: {
       if (options.redirectUrl) {
         router.push(options.redirectUrl);
       }
+      // Call optional onSuccess callback
+      if (options.onSuccessCallback) {
+        options.onSuccessCallback(data);
+      }
     },
     onError: (error: Error) => {
       errorHandler(error);
+      // Call optional onError callback
+      if (options.onErrorCallback) {
+        options.onErrorCallback(error);
+      }
     },
   });
 };

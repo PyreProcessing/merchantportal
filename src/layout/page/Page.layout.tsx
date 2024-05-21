@@ -1,8 +1,7 @@
 import BlockedMessage from '@/components/blockedMessage/BlockedMessage.component';
 import { useUser } from '@/state/auth';
 import { useLayoutStore } from '@/state/ui/layout';
-import { Navigation } from '@/types/navigation';
-import { FEATURES, hasFeature } from '@/utils/hasFeature';
+import { hasFeature } from '@/utils/hasFeature';
 import Auth from '@/views/auth/Auth.view';
 import Head from 'next/head';
 import { ReactNode } from 'react';
@@ -12,6 +11,7 @@ import Control from '../control/Control.layout';
 import Header from '../header/Header.layout';
 import SideBar from '../sideBar/SideBar.layout';
 import styles from './Page.module.scss';
+import { ControlNavItem } from '@/types/controlNavItem';
 
 //make a type with children as a prop
 type Props = {
@@ -20,7 +20,7 @@ type Props = {
   largeSideBar?: boolean;
   backgroundColor?: string;
   hideControlLayout?: boolean;
-  controlNav?: Array<Navigation>;
+  controlNav?: Array<ControlNavItem>;
   neededFeature?: any;
   enableBlockCheck?: boolean;
 };

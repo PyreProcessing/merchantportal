@@ -22,7 +22,7 @@ import Loader from '../loader/Loader.component';
 type Props = {
   default?: string;
   label?: string;
-  name?: string;
+  name?: string | string[];
   listType?: 'picture-card' | 'text' | 'picture-circle';
   action?: string;
   placeholder?: string;
