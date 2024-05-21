@@ -83,6 +83,13 @@ const SettingsForm = (props: Props) => {
                     <Input />
                   </Form.Item>
                   <Form.Item
+                    label="Business Email"
+                    name={['businessInfo', 'email']}
+                    tooltip="This email will be used for business related notifications and communication. it can be the same as your personal email that you use to access the site"
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
                     label="Business Description or mission statement"
                     name={['businessInfo', 'missionStatement']}
                   >
