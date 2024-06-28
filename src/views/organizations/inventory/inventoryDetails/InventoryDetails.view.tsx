@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import styles from './InventoryDetails.module.scss';
+import cssStyles from './InventoryDetails.module.css';
 import formStyles from '@/Form.module.scss';
-import PhotoUpload from '@/components/photoUpload/PhotoUpload.component';
 import {
-  Button,
   Divider,
+  FloatButton,
   Form,
   Input,
   InputNumber,
@@ -15,13 +15,15 @@ import {
 import { useRouter } from 'next/router';
 import usePostData from '@/state/usePostData';
 import useUpdateData from '@/state/useUpdateData';
-import { on } from 'events';
 import useFetchData from '@/state/useFetchData';
+import PhotowallUpload from '@/components/photoWallUpload/PhotowallUpload.component';
+import { SaveOutlined } from '@ant-design/icons';
 
 const InventoryDetails = () => {
   const [form] = Form.useForm();
   const router = useRouter();
   const { id } = router.query;
+  const [images, setImages] = React.useState<string[]>([]);
 
   const { mutate: addInventory } = usePostData({
     url: `/inventory`,
@@ -44,7 +46,6 @@ const InventoryDetails = () => {
   });
 
   const onFinish = (values: any) => {
-    console.log('Success:', values);
     if (id) {
       updateInventory({ url: `/inventory/${id}`, formData: values });
     } else {
@@ -55,6 +56,11 @@ const InventoryDetails = () => {
   useEffect(() => {
     if (id) {
       form.setFieldsValue(data?.payload.inventory);
+      setImages(
+        data?.payload.inventory.images.map((image: any) => {
+          return { url: image, uid: image }; 
+        })
+      );
     }
   }, [data]);
 
@@ -65,18 +71,13 @@ const InventoryDetails = () => {
         <div className={formStyles.form__formContainer}>
           <div className={formStyles.form__formGroup}>
             <div className={formStyles.form__inputGroup}>
-              <div className={styles.imageUploadContainer}>
-                <div className={styles.imageContainer}>
-                  <PhotoUpload
-                    listType="picture-card"
-                    isAvatar={false}
-                    name="ministryImageUrl"
-                    form={form}
-                    action={`${process.env.API_URL}/upload`}
-                    // default={selectedProfile?.ministry?.ministryImageUrl}
-                  />
-                </div>
-              </div>
+              <Form.Item label="Product Images" name="images">
+                <PhotowallUpload
+                  images={images as any[]}
+                  action={`${process.env.API_URL}/upload`}
+                  updateForm={(images) => form.setFieldsValue({ images })}
+                />
+              </Form.Item>
             </div>
           </div>
         </div>
@@ -177,9 +178,9 @@ const InventoryDetails = () => {
                 name="outOfStock"
                 rules={[]}
                 tooltip="This is the out of stock status of your product. It is used to manage your inventory. Marking the product as out of stock will prevent customers from purchasing the product."
-                valuePropName='checked'
+                valuePropName="checked"
               >
-                <Switch checkedChildren="Yes" unCheckedChildren="No"  />
+                <Switch checkedChildren="Yes" unCheckedChildren="No" />
               </Form.Item>
             </div>
             <div className={formStyles.form__inputGroup}>
@@ -188,7 +189,7 @@ const InventoryDetails = () => {
                 name="unlimitedStock"
                 rules={[]}
                 tooltip="This helps with the stock management of your product. Marking the product as unlimited stock will prevent the product from going out of stock. This is mainly used for digital products."
-                valuePropName='checked'
+                valuePropName="checked"
               >
                 <Switch checkedChildren="Yes" unCheckedChildren="No" />
               </Form.Item>
@@ -199,7 +200,7 @@ const InventoryDetails = () => {
                 name="productVisibility"
                 rules={[]}
                 tooltip="This is the visibility of your product. It is used to manage your inventory. Marking the product as invisible will prevent customers from seeing the product."
-                valuePropName='checked'
+                valuePropName="checked"
               >
                 <Switch
                   checkedChildren="Invisibile"
@@ -213,9 +214,9 @@ const InventoryDetails = () => {
                 name="requiresShipping"
                 rules={[]}
                 tooltip="products that require shipping will be charged differently from products that do not require shipping. If you have a physical product, you should mark it as requiring shipping. If you have a digital product, you should mark it as not requiring shipping."
-                valuePropName='checked'
+                valuePropName="checked"
               >
-                <Switch checkedChildren="Yes" unCheckedChildren="No"  />
+                <Switch checkedChildren="Yes" unCheckedChildren="No" />
               </Form.Item>
             </div>
           </div>
@@ -368,7 +369,7 @@ const InventoryDetails = () => {
                   mode="tags"
                   placeholder="Meta Keywords"
                   allowClear
-                  tokenSeparators={[',']} 
+                  tokenSeparators={[',']}
                 />
               </Form.Item>
             </div>
@@ -387,28 +388,23 @@ const InventoryDetails = () => {
           </div>
         </div>
         {/* buttons container */}
-        <div className={formStyles.form__buttonContainer}>
-          <Button
-            type="primary"
-            htmlType="submit"
-            className={formStyles.form__button}
-            loading={false}
-            onClick={() => {
-              form
-                .validateFields()
-                .then((values) => {
-                  onFinish(values);
-                })
-                .catch((errorInfo) => {
-                  for (const error of errorInfo.errorFields) {
-                    message.error(error.errors);
-                  }
-                });
-            }}
-          >
-            {id ? 'Update Inventory' : 'Add Inventory'}
-          </Button>
-        </div>
+        <FloatButton
+          onClick={() => {
+            // submit the form
+            form
+              .validateFields()
+              .then((values) => {
+                onFinish(values);
+              })
+              .catch((errorInfo) => {
+                for (const error of errorInfo.errorFields) {
+                  message.error(error.errors);
+                }
+              });
+          }}
+          icon={<SaveOutlined rev />}
+          tooltip={id ? 'Update Inventory' : 'Add Inventory'}
+        />
       </Form>
     </div>
   );

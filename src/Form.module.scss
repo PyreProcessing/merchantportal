@@ -79,7 +79,11 @@
   }
   &__formGroup {
     display: flex;
-    gap: 10px; 
+    gap: 10px;
+
+    @include mobile {
+      flex-direction: column;
+    }
   }
   &__formContainer {
     display: flex;
