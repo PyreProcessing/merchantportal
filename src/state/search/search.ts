@@ -62,7 +62,7 @@ export const useSearchStore = create<SearchLayout>((set) => ({
   search: '',
   numberPages: 0,
   pageNumber: 1,
-  pageLimit: 18,
+  pageLimit: 10,
   filter: '',
   sort: '',
   queryKey: '',

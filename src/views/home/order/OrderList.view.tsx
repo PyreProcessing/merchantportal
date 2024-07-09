@@ -9,6 +9,7 @@ import useFetchData from '@/state/useFetchData';
 import { useUser } from '@/state/auth';
 import { useRouter } from 'next/router';
 import OrderType from '@/types/OrderType';
+import moment from 'moment';
 
 const OrderList = () => {
   const router = useRouter();
@@ -145,6 +146,14 @@ const OrderList = () => {
               dataIndex: 'trackingNumber',
               key: 'trackingNumber',
               render: (text, record) => <>{record?.trackingNumber ?? 'N/A'}</>,
+            },
+            {
+              title: 'Date Created',
+              dataIndex: 'createdAt',
+              key: 'createdAt',
+              render: (text, record) => (
+                <>{moment(record?.createdAt).format('MM/DD/YYYY')}</>
+              ),
             },
             {
               title: 'Actions',

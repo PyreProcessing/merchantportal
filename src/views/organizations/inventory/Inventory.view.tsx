@@ -139,7 +139,7 @@ const InventoryView = (props: Props) => {
                     <Button
                       onClick={() => {
                         navigator.clipboard.writeText(
-                          `https://payment.pyreprocessing.com/product/nmi/${
+                          `https://payment.pyreprocessing.com/product/${
                             //URL encode the encrypted data
                             encodeURIComponent(encryptData(record._id))
                           }`
