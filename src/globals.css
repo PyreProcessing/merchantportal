@@ -67,7 +67,7 @@
 
 *{
   /* set box-sizing to border-box */
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 
 .bold{
@@ -81,7 +81,7 @@ a {
 /* set html, body background defaults */
 html, body {
   /* use a dark linear gradient with blue colors */
-  background-image: linear-gradient(120deg, #0c0c0c 0%, var(--color-primary-dark) 100%);
+  background-color: #e3eefa;
   color: var(--color-primary500);
   font-family: var(--font-family-primary);
   position: relative;

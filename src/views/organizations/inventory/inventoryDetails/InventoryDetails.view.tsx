@@ -18,11 +18,15 @@ import useUpdateData from '@/state/useUpdateData';
 import useFetchData from '@/state/useFetchData';
 import PhotowallUpload from '@/components/photoWallUpload/PhotowallUpload.component';
 import { SaveOutlined } from '@ant-design/icons';
+import TinyEditor from '@/components/tinyEditor/TinyEditor.component';
 
 const InventoryDetails = () => {
   const [form] = Form.useForm();
   const router = useRouter();
   const { id } = router.query;
+  const [initialContent, setInitialContent] = React.useState<string | null>(
+    null
+  );
   const [images, setImages] = React.useState<string[]>([]);
 
   const { mutate: addInventory } = usePostData({
@@ -58,9 +62,10 @@ const InventoryDetails = () => {
       form.setFieldsValue(data?.payload.inventory);
       setImages(
         data?.payload.inventory.images.map((image: any) => {
-          return { url: image, uid: image }; 
+          return { url: image, uid: image };
         })
       );
+      setInitialContent(data?.payload.inventory.description);
     }
   }, [data]);
 
@@ -232,7 +237,16 @@ const InventoryDetails = () => {
                   },
                 ]}
               >
-                <Input.TextArea />
+                {id && !isLoading && (
+                  <TinyEditor
+                    handleChange={
+                      // gets the value from the editor and sets it to the form
+                      (value: string) =>
+                        form.setFieldsValue({ description: value })
+                    }
+                    initialContent={initialContent ?? ''}
+                  />
+                )}
               </Form.Item>
             </div>
           </div>

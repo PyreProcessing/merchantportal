@@ -41,7 +41,7 @@ const OrderDetails = () => {
   });
 
   const { mutate: voidOrder } = usePostData({
-    url: `/transaction/${data?.payload?.data.paymentProcessor}/${router.query.id}/void`,
+    url: `/transaction/${router.query.id}/void`,
     key: 'voidOrder',
     queriesToInvalidate: ['orderDetails'],
     successMessage: 'Order voided successfully',
@@ -54,7 +54,7 @@ const OrderDetails = () => {
   });
 
   const { mutate: refundOrder } = usePostData({
-    url: `/transaction/${data?.payload?.data.paymentProcessor}/${router.query.id}/refund`,
+    url: `/transaction/${router.query.id}/refund`,
     key: 'refundOrder',
     queriesToInvalidate: ['orderDetails'],
     successMessage: 'Order refunded successfully',
@@ -138,13 +138,7 @@ const OrderDetails = () => {
             <span>
               {moment(order.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
             </span>
-          </div>
-          <div className={styles.detailsContainer}>
-            <h3>Updated At</h3>
-            <span>
-              {moment(order.updatedAt).format('MMMM Do YYYY, h:mm:ss a')}
-            </span>
-          </div>
+          </div> 
           {/* shipping infromation, date shipped, tracking info etc */}
           <div className={styles.detailsContainer}>
             <h3>Shipped</h3>
@@ -299,7 +293,7 @@ const OrderDetails = () => {
             <h3>Zip Code</h3>
             <span>{order.billingAddress?.zipcode}</span>
           </div>
-        </div>
+        </div> 
       </div>
       <div className={styles.rightContainer}>
         <Card className={styles.card} title="Customer Details">
@@ -331,12 +325,12 @@ const OrderDetails = () => {
                 type="primary"
                 disabled={
                   // if order is shipped or order status is success
-                  order.shipped ||
+                  !order.shipped ||
                   /^(cancelled|refunded|processing)$/.test(order.status)
                 }
                 onClick={() =>
                   markAsShipped({
-                    url: `/transaction/${order.paymentProcessor}/${order._id}/mark-as-shipped`,
+                    url: `/transaction/${order._id}/mark-as-shipped`,
                     formData: {
                       shipped: true,
                       shippedDate: new Date().toISOString(),
@@ -354,9 +348,9 @@ const OrderDetails = () => {
               <Button
                 type="primary"
                 disabled={
-                  // if order created at date is older than 10 minutes
+                  // if order created at date is older than 1 day
                   moment(order.createdAt).isBefore(
-                    moment().subtract(10, 'minutes')
+                    moment().subtract(1, 'days')
                   ) || /^(cancelled|refunded)$/.test(order.status)
                 }
                 onClick={() => voidOrder({})}

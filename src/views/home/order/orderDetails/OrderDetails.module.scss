@@ -1,8 +1,12 @@
 .container {
   display: flex;
   gap: 1rem;
+  flex: 1;
+  margin-bottom: 2%;
   .leftContainer {
-    flex: 0.75;
+    display: flex;
+    flex-direction: column;
+    flex: 1; 
     .transactionId {
       font-size: 1.25rem;
       font-weight: 300;
@@ -13,7 +17,7 @@
   .rightContainer {
     flex: 0.25;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
   }
 }
 
