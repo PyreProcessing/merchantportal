@@ -237,7 +237,7 @@ const InventoryDetails = () => {
                   },
                 ]}
               >
-                {id && !isLoading && (
+                {!isLoading && (
                   <TinyEditor
                     handleChange={
                       // gets the value from the editor and sets it to the form
