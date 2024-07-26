@@ -237,16 +237,14 @@ const InventoryDetails = () => {
                   },
                 ]}
               >
-                {!isLoading && (
-                  <TinyEditor
-                    handleChange={
-                      // gets the value from the editor and sets it to the form
-                      (value: string) =>
-                        form.setFieldsValue({ description: value })
-                    }
-                    initialContent={initialContent ?? ''}
-                  />
-                )}
+                <TinyEditor
+                  handleChange={
+                    // gets the value from the editor and sets it to the form
+                    (value: string) =>
+                      form.setFieldsValue({ description: value })
+                  }
+                  initialContent={initialContent ?? ''}
+                />
               </Form.Item>
             </div>
           </div>
