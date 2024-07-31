@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import styles from './InventoryDetails.module.scss';
-import cssStyles from './InventoryDetails.module.css';
 import formStyles from '@/Form.module.scss';
 import {
   Divider,
@@ -19,10 +18,13 @@ import useFetchData from '@/state/useFetchData';
 import PhotowallUpload from '@/components/photoWallUpload/PhotowallUpload.component';
 import { SaveOutlined } from '@ant-design/icons';
 import TinyEditor from '@/components/tinyEditor/TinyEditor.component';
+import slugify from 'slugify';
+import { useUser } from '@/state/auth';
 
 const InventoryDetails = () => {
   const [form] = Form.useForm();
   const router = useRouter();
+  const { data: loggedInData } = useUser();
   const { id } = router.query;
   const [initialContent, setInitialContent] = React.useState<string | null>(
     null
@@ -43,13 +45,25 @@ const InventoryDetails = () => {
     redirectUrl: '/organization/inventory',
   });
 
-  const { data, isFetching, isLoading, error, isError } = useFetchData({
+  const { data } = useFetchData({
     url: `/inventory/${id}`,
     key: 'inventoryDetails',
     enabled: !!id,
   });
+  const { data: categoryData } = useFetchData({
+    url: '/category',
+    key: ['categories'],
+    filter: `merchant;${loggedInData?.user?._id}`,
+    enabled: !!loggedInData?.user,
+  });
 
   const onFinish = (values: any) => {
+    // we need to url encode the categories, so that they are slugified and special characters are removed
+    if (values.category) {
+      values.category = values.category.map((category: string) =>
+        slugify(category.toLowerCase())
+      );
+    }
     if (id) {
       updateInventory({ url: `/inventory/${id}`, formData: values });
     } else {
@@ -112,6 +126,12 @@ const InventoryDetails = () => {
                   placeholder="Product Categorization"
                   allowClear
                   tokenSeparators={[',']}
+                  options={categoryData?.payload?.data?.category?.map(
+                    (category: any) => ({
+                      label: category,
+                      value: category,
+                    })
+                  )}
                 />
               </Form.Item>
             </div>

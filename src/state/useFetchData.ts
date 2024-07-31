@@ -35,7 +35,7 @@ const fetchData = async (options?: {
  * @since 1.0
  */
 export default (options?: {
-  key: string;
+  key: string | string[];
   url?: string;
   refetchOnWindowFocus?: boolean;
   enabled?: boolean;
@@ -48,8 +48,14 @@ export default (options?: {
   onSuccess?: (data: any) => void;
   onError?: (error: any) => void;
 }) => {
+  const key =
+    typeof options?.key === 'string'
+      ? [options?.key]
+      : // if its an array, remove the array, return both elements as separate strings
+        // example ["key1", "key2"] => "key1", "key2"
+        options?.key.map((key) => key) || [];
   const query = useQuery(
-    [options?.key],
+    key,
     () =>
       fetchData({
         url: options?.url,
