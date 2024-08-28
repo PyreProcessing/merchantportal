@@ -8,7 +8,7 @@ const TinyEditor = ({ handleChange, initialContent }) => {
   return (
     <Editor
       onInit={(evt, editor) => {
-        editorRef.current = editor;
+        editorRef.current = editor as any;
       }}
       initialValue={parse(initialContent)}
       onChange={(e) => handleChange(e.target.getContent())}

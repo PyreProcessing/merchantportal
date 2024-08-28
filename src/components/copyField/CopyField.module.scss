@@ -2,13 +2,14 @@
 .container {
   background-color: $quintenary-color;
   padding: 10px;
-  word-wrap: break-word;
   color: $primary-color;
   border-radius: 5px;
+  display: flex;
 
   gap: 10px;
   .field {
-    word-wrap: break-word;
+    overflow-x: scroll;
+    white-space: nowrap;
     // width: 350px;
   }
 

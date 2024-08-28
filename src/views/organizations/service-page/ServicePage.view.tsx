@@ -15,7 +15,7 @@ const ServicePage = () => {
       <iframe
         src={
           process.env.ENV === 'development'
-            ? `http://localhost:3005/service/example/${user?.businessInfo.businessSlug}?disableForm=true`
+            ? `http://localhost:3005/service/example/${user?.businessInfo?.businessSlug}?disableForm=true`
             : `https://payment.pyreprocessing.com/service/example/${user?.businessInfo?.businessSlug}?disableForm=true`
         }
         loading="lazy"

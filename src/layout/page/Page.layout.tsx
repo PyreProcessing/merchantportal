@@ -25,6 +25,8 @@ type Props = {
   enableBlockCheck?: boolean;
 };
 const PageLayout = (props: Props) => {
+  const { largeSideBar = true } = props;
+
   const sideBarOpen = useLayoutStore((state) => state.sideBarOpen);
   const controlLayoutOpen = useLayoutStore((state) => state.controlLayoutOpen);
   const toggleControlLayout = useLayoutStore(
@@ -76,7 +78,7 @@ const PageLayout = (props: Props) => {
 
       <div
         className={`${styles.container} ${
-          props.largeSideBar ? '' : styles.small
+           largeSideBar ? '' : styles.small
         } ${sideBarOpen && styles.sideBarActive}`}
       >
         {loggedInData ? (
@@ -84,7 +86,7 @@ const PageLayout = (props: Props) => {
             <Header pages={props.pages} />
             <div className={styles.sideBar}>
               {props.pages && (
-                <SideBar page={props.pages[0]} large={props.largeSideBar} />
+                <SideBar page={props.pages[0]} large={largeSideBar} />
               )}
             </div>
             <div

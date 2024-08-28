@@ -39,14 +39,14 @@ const PageOptions = () => {
   };
   React.useEffect(() => {
     form.setFieldsValue({
-      ...loggedInData?.user.servicePageOptions.predeterminedAmounts,
+      ...loggedInData?.user?.servicePageOptions?.predeterminedAmounts,
     });
-    setAmounts(loggedInData?.user.servicePageOptions.predeterminedAmounts);
+    setAmounts(loggedInData?.user?.servicePageOptions?.predeterminedAmounts);
   }, [loggedInData]);
   return (
     <div className={styles.container}>
       <div className={styles.subContainer}>
-        {amounts.map((amount, index) => {
+        {amounts?.map((amount, index) => {
           return (
             <Button
               key={index}

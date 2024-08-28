@@ -4,6 +4,7 @@ import { HiOutlineChartSquareBar } from 'react-icons/hi';
 import { MdAttachMoney, MdSettings } from 'react-icons/md';
 import { FaStore, FaUsers } from 'react-icons/fa';
 import checkRole from '@/utils/checkRole';
+import { IoCodeSlashOutline } from 'react-icons/io5';
 
 export const navigation = (options?: {
   loggedInData?: { user: any };
@@ -65,6 +66,11 @@ export const navigation = (options?: {
           title: 'Account Settings',
           link: '/account/settings',
           icon: <MdSettings />,
+        },
+        keys: {
+          title: 'API Keys',
+          link: '/account/keys',
+          icon: <IoCodeSlashOutline />,
         },
       },
     },

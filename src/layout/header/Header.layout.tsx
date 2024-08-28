@@ -76,7 +76,7 @@ const Header = (props: Props) => {
                 <p>Logged in</p>
               </div>
             </div>
-            {/* <Notifications /> */}
+            <Notifications />
             <Tooltip title="Logout">
               <BiLogOutCircle
                 className={styles.logoutIcon}
