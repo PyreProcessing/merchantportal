@@ -13,7 +13,11 @@ const fetchData = async (options?: {
   const keyword = options?.defaultKeyword || store.getState().search;
   const pageNumber = options?.defaultPageNumber || store.getState().pageNumber;
   const pageLimit = options?.defaultPageLimit || store.getState().pageLimit; // Fix: Use defaultPageLimit here
-  const filter = options?.defaultFilter || store.getState().filter;
+  // if there is a default filter, and a store filter, we need to use both, otherwise we can use the values provided
+  const filter = `${options?.defaultFilter}${
+    store.getState().filter ? `,${store.getState().filter}` : ''
+  }`;
+  // const filter = options?.defaultFilter || store.getState().filter;
   const sort = options?.defaultSort || store.getState().sort;
 
   const { data } = await axios.get(

@@ -54,7 +54,13 @@ const ApiKeys = () => {
 
   return (
     <div className={styles.container}>
-      <Modal title="Create API Key" open={open} onCancel={() => setOpen(false)}>
+      <Modal
+        title="Create API Key"
+        open={open}
+        // dont show cancel button 
+        cancelButtonProps={{ style: { display: 'none' } }}
+        onOk={() => setOpen(false)}
+      >
         <p>
           For security purposes we can only show you this API Key once, please
           ensure you copy it and store it in a safe location, you will not be
@@ -63,8 +69,8 @@ const ApiKeys = () => {
         <CopyField data={key} />
       </Modal>
       <SearchWrapper
-        placeholder="Filter inventory"
-        queryKey="inventory"
+        placeholder="Filter by API Key Name"
+        queryKey="keys"
         buttons={[
           {
             icon: <FaPlus />,
@@ -119,6 +125,14 @@ const ApiKeys = () => {
             key: '',
             label: 'All',
           },
+          {
+            key: 'isActive;true',
+            label: 'Active',
+          },
+          {
+            key: 'isActive;false',
+            label: 'Expired',
+          },
         ]}
         sort={[
           {
@@ -127,7 +141,6 @@ const ApiKeys = () => {
           },
         ]}
         total={data?.payload?.totalCount}
-        key={'agents'}
         isFetching={isFetching}
         disableButtons={isFetching}
       >
