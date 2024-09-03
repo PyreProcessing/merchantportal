@@ -1,10 +1,16 @@
 import { Navigation } from '@/types/navigation';
 import { RiHome2Fill } from 'react-icons/ri';
 import { HiOutlineChartSquareBar } from 'react-icons/hi';
-import { MdAttachMoney, MdSettings } from 'react-icons/md';
-import { FaStore, FaUsers } from 'react-icons/fa';
+import {
+  MdAttachMoney,
+  MdInventory,
+  MdRequestPage,
+  MdSettings,
+} from 'react-icons/md';
+import { FaRecycle, FaStore, FaUsers } from 'react-icons/fa';
 import checkRole from '@/utils/checkRole';
 import { IoCodeSlashOutline } from 'react-icons/io5';
+import { GrCycle, GrPowerCycle } from 'react-icons/gr';
 
 export const navigation = (options?: {
   loggedInData?: { user: any };
@@ -47,15 +53,30 @@ export const navigation = (options?: {
     organization: {
       title: 'Organization',
       links: {
+        transaction: {
+          title: 'Transactions',
+          link: '/organization/transactions',
+          icon: <MdAttachMoney />,
+        },
+        customer: {
+          title: 'Customers',
+          link: '/organization/customers',
+          icon: <FaUsers />,
+        },
+        recurring: {
+          title: 'Recurring',
+          link: '/organization/recurring',
+          icon: <FaRecycle />,
+        },
         inventory: {
           title: 'Inventory',
           link: '/organization/inventory',
-          icon: <FaStore />,
+          icon: <MdInventory />,
         },
         service_page: {
           title: 'Service Page',
           link: '/organization/service-page',
-          icon: <FaStore />,
+          icon: <MdRequestPage />,
         },
       },
     },

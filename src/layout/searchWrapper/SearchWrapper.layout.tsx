@@ -5,6 +5,7 @@ import {
   Button,
   Dropdown,
   Input,
+  message,
   Pagination,
   Skeleton,
   Space,
@@ -18,6 +19,8 @@ import styles from './SearchWrapper.module.scss';
 import type { MenuProps } from 'antd';
 import { MdSort } from 'react-icons/md';
 import Link from 'next/link';
+import Title from 'antd/es/skeleton/Title';
+import TitleContainer from '@/components/titleContainer/TitleContainer.UI';
 
 const { Search } = Input;
 
@@ -44,6 +47,8 @@ type Props = {
   }[];
   isFetching: any;
   disableButtons?: boolean;
+  error?: boolean;
+  errorData?: any;
 };
 
 const SearchWrapper = (props: Props) => {
@@ -212,6 +217,7 @@ const SearchWrapper = (props: Props) => {
         <p className={styles.searchStats}>
           {props.total} items {search !== '' && <span>for {search}</span>}
         </p>
+        {props.error && <TitleContainer title={props.errorData.message} styles={styles.titleContainer}/>}
         {props.isFetching ? <Skeleton active /> : props.children}
       </div>
       <div className={styles.pagination}>

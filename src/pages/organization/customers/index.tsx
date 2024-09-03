@@ -4,7 +4,7 @@ import CustomersView from '@/views/organizations/customers/Customers.view';
 const Customers = () => {
   return (
     <>
-      <PageLayout pages={[navigation()?.organization?.links?.customers]}>
+      <PageLayout pages={[navigation()?.organization?.links?.customer]}>
         <CustomersView />
       </PageLayout>
     </>

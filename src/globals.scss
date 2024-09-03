@@ -61,3 +61,81 @@ $simple-animation: all 0.2s ease-in-out;
     @content;
   }
 }
+
+.form {
+  padding: 50px 0;
+  label {
+    font-size: 15px;
+    font-weight: 400;
+    // color: $primary-color-lighter;
+    @include mobile {
+      font-size: 13px;
+    }
+  }
+
+  select {
+    padding: 16px 13px !important;
+  }
+  .input {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    margin: 0;
+    background-color: $quintenary-color;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 400;
+    color: $accent-color-dark;
+    width: 100%;
+    border: none;
+    input { 
+      color: $quaternary-color-lighter;
+    }
+
+    // target the placeholder text
+    &::placeholder,
+    ::placeholder {
+    }
+    &:focus {
+      // outline: none;
+      // background-color: $tertiary-color-lighter;
+    }
+
+    @include mobile {
+      font-size: 13px;
+    }
+  }
+
+  .group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+  }
+
+  .header {
+    color: black !important;
+    font-size: 20px !important;
+
+    @include mobile {
+      font-size: 17px !important;
+    }
+  }
+
+  button {
+    margin-top: 20px;
+    background-color: $secondary-color-lighter;
+    color: $quaternary-color-lighter;
+    padding: 0 50px;
+    font-weight: 600;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: $accent-color-dark;
+    }
+  }
+}

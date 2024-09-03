@@ -1,0 +1,40 @@
+@import '@/globals.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  .headerContainer {
+    .title {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 60px;
+      margin: 24px 0px 0px;
+      max-width: 992px;
+      // set color to inherit from parent class or set it default to primary900
+
+      color: var(inherit, --color-primary900);
+
+      @include mobile {
+        font-size: 36px;
+        line-height: 36px;
+      }
+    }
+  }
+  .subtitleContainer {
+    .subtitle {
+      font-size: 24px;
+      line-height: 28px;
+      font-weight: 400;
+      margin: 44px 0px 0px;
+      color: var(inherit, --color-primary900);
+      @include mobile {
+        font-size: 18px;
+        line-height: 24px;
+      }
+    }
+  }
+}
