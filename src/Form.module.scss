@@ -17,6 +17,7 @@
   &__inputGroup {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex: 1;
     gap: 10px;
   }
@@ -51,15 +52,12 @@
     justify-content: center;
     align-items: center;
     background-color: var(--color-primary500);
-    border: none;
     border-radius: 5px;
     color: white;
-    font-size: 1.2rem;
     padding: 10px;
-    width: 90%;
+    // width: 90%;
     &:hover {
       transition: all 0.3s ease-in-out;
-      width: 100%;
       cursor: pointer;
       background-color: var(--color-primary600);
     }
@@ -92,5 +90,20 @@
     background-color: white;
     padding: 2%;
     border-radius: 10px;
+  }
+  &__helperText {
+    font-size: 0.75rem;
+    color: gray;
+  }
+  &__switchGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  &__switch {
+    background-color: $quintenary-color;
+    padding: 10px;
+    border-radius: 15px;
+    width: 100%;
   }
 }

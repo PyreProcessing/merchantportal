@@ -22,7 +22,7 @@ const CustomerDetails = () => {
     url: '/customer',
     key: 'customer',
     successMessage: 'Customer added successfully',
-    redirectUrl: '/organizations/customer',
+    redirectUrl: '/organization/customers',
   });
 
   const onFinish = (values: any) => {

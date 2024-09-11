@@ -16,11 +16,11 @@ type InterfaceState = {
 
 export const useInterfaceStore = create<InterfaceState>(
   (set: any, get: any) => ({
-    paymentMethod: 'creditcard',
+    paymentMethod: '',
     signUpPaymentFormValues: {},
     currentForm: undefined,
     transactionData: {},
-    transactionMethod: 'single',
+    transactionMethod: '',
     setTransactionMethod: (method: string) =>
       set({ transactionMethod: method }),
     setTransactionDataValues: (values: any) => {
