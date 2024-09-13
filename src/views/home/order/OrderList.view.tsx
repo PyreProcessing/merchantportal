@@ -17,6 +17,7 @@ const OrderList = () => {
   const { data, isFetching, isLoading, error, isError } = useFetchData({
     url: `/order`,
     key: 'orders',
+    filter: `orderType;{"$ne":"transaction"}`,
   });
 
   const { mutate: deleteInventory } = useRemoveData({

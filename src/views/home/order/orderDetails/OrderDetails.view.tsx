@@ -104,33 +104,35 @@ const OrderDetails = () => {
           </span>
         </Divider>
         {/* show a table of the items in the receipt */}
-        <Table
-          dataSource={order.items}
-          columns={[
-            {
-              title: 'Item',
-              dataIndex: 'name',
-              key: 'name',
-            },
-            {
-              title: 'Quantity',
-              dataIndex: 'quantity',
-              key: 'quantity',
-            },
-            {
-              title: 'Price',
-              dataIndex: 'price',
-              key: 'price',
-            },
-            {
-              title: 'Total',
-              dataIndex: 'total',
-              key: 'total',
-            },
-          ]}
-          pagination={false}
-          rowKey={(record) => record._id}
-        />
+        {order.items && order.items.length > 0 && (
+          <Table
+            dataSource={order.items}
+            columns={[
+              {
+                title: 'Item',
+                dataIndex: 'name',
+                key: 'name',
+              },
+              {
+                title: 'Quantity',
+                dataIndex: 'quantity',
+                key: 'quantity',
+              },
+              {
+                title: 'Price',
+                dataIndex: 'price',
+                key: 'price',
+              },
+              {
+                title: 'Total',
+                dataIndex: 'total',
+                key: 'total',
+              },
+            ]}
+            pagination={false}
+            rowKey={(record) => record._id}
+          />
+        )}
         <Divider orientation="left">Misc. Information</Divider>
         <div className={styles.subContainer}>
           <div className={styles.detailsContainer}>
@@ -138,7 +140,7 @@ const OrderDetails = () => {
             <span>
               {moment(order.createdAt).format('MMMM Do YYYY, h:mm:ss a')}
             </span>
-          </div> 
+          </div>
           {/* shipping infromation, date shipped, tracking info etc */}
           <div className={styles.detailsContainer}>
             <h3>Shipped</h3>
@@ -293,7 +295,7 @@ const OrderDetails = () => {
             <h3>Zip Code</h3>
             <span>{order.billingAddress?.zipcode}</span>
           </div>
-        </div> 
+        </div>
       </div>
       <div className={styles.rightContainer}>
         <Card className={styles.card} title="Customer Details">

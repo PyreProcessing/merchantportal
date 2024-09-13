@@ -11,7 +11,7 @@
   },
   "components": {
     "Button": {
-      "colorPrimary": "#02225e"
+      "primaryColor": "#ffffff"
     }
   }
 }

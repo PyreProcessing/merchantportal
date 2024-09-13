@@ -51,15 +51,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-primary500);
-    border-radius: 5px;
-    color: white;
+    // background-color: var(--color-primary500);
+    border-radius: 25px;
+    // color: white;
     padding: 10px;
     // width: 90%;
     &:hover {
       transition: all 0.3s ease-in-out;
       cursor: pointer;
-      background-color: var(--color-primary600);
+      // background-color: var(--color-primary600);
     }
   }
   &__clearInput {

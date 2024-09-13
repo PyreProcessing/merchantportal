@@ -7,7 +7,7 @@ import { FaChevronCircleLeft } from 'react-icons/fa';
 import { FaMoneyBill1Wave } from 'react-icons/fa6';
 import { MdRepeat } from 'react-icons/md';
 import SingleForm from './forms/SingleForm.form';
-import Recurring from './forms/Recurring.form';
+import RecurringOverview from './forms/RecurringOverview.component';
 
 const TransactionData = () => {
   const { transactionMethod, setTransactionMethod } = useInterfaceStore(
@@ -50,7 +50,7 @@ const TransactionData = () => {
               <MdRepeat />
               <span>Recurring Transaction</span>
             </div>
-            <Recurring />
+            <RecurringOverview />
           </div>
         );
       default:

@@ -16,26 +16,15 @@ import { useInterfaceStore } from '@/state/interface';
 import moment from 'moment';
 import dayjs from 'dayjs';
 
-const Recurring = () => {
-  const [form] = Form.useForm();
-  const { transactionData, setCurrentForm, setTransactionDataValues } =
-    useInterfaceStore((state) => state);
+interface RecurringProps {
+  form: any;
+  onFinish: (values) => void;
+  showSubmitButton?: boolean;
+}
 
+const Recurring = ({ form, onFinish, showSubmitButton }: RecurringProps) => {
   // State to track the switch status
   const [isChargeUntilCancel, setIsChargeUntilCancel] = useState(true);
-
-  useEffect(() => {
-    form.setFieldsValue(transactionData);
-    setCurrentForm(form);
-  }, [transactionData, form, setCurrentForm]);
-
-  useEffect(() => {
-    // Clear numberOfPayments when chargeUntilCancel is true
-    if (isChargeUntilCancel) {
-      form.setFieldsValue({ numberOfPayments: undefined });
-    }
-  }, [isChargeUntilCancel, form]);
-
   const handleChargeUntilCancelChange = (checked) => {
     setIsChargeUntilCancel(checked);
     if (checked) {
@@ -44,28 +33,12 @@ const Recurring = () => {
     }
   };
 
-  const onFinish = (values) => {
-    // validate the form, if there are any errors, return
-    form
-      .validateFields()
-      .then(() => {
-        // If the form is valid, save the values
-        Modal.confirm({
-          title: 'Are you sure you want to save these values?',
-          content:
-            'This will update the transaction data for this customer, and set the customer to recurring transactions',
-          okText: 'Yes',
-          cancelText: 'No',
-          onOk: () => {
-            setTransactionDataValues({ recurringData: { ...values } });
-          },
-        });
-      })
-      .catch((errorInfo) => {
-        console.log('Error: ', errorInfo);
-        message.error('Please fill out all required fields');
-      });
-  };
+  useEffect(() => {
+    // Clear numberOfPayments when chargeUntilCancel is true
+    if (isChargeUntilCancel) {
+      form.setFieldsValue({ numberOfPayments: undefined });
+    }
+  }, [isChargeUntilCancel, form]);
 
   return (
     <Form
@@ -187,17 +160,35 @@ const Recurring = () => {
             </Form.Item>
           </div>
         </div>
+        <div className={formStyles.form__inputGroup}>
+          <Form.Item
+            name="description"
+            label="Description"
+            tooltip="A short description of the transaction, This will help you identify what the transaction is for"
+            rules={[
+              {
+                required: true,
+                message: 'Please input a description',
+                max: 255,
+              },
+            ]}
+          >
+            <Input className={formStyles.form__input} min={1} />
+          </Form.Item>
+        </div>
       </div>
       {/* button to save values */}
-      <div className={formStyles.form__buttonContainer}>
-        <Button
-          type="primary"
-          onClick={() => form.submit()}
-          className={formStyles.form__button}
-        >
-          Save
-        </Button>
-      </div>
+      {showSubmitButton && (
+        <div className={formStyles.form__buttonContainer}>
+          <Button
+            type="primary"
+            onClick={() => form.submit()}
+            className={formStyles.form__button}
+          >
+            Save
+          </Button>
+        </div>
+      )}
     </Form>
   );
 };

@@ -1,0 +1,45 @@
+@import '@/globals.scss';
+
+.container {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .paymentMethodButton {
+    background-color: white;
+    color: $primary-color;
+    padding: 25px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    // justify-content: flex-start;
+    justify-content: center;
+    width: auto;
+    display: flex;
+    gap: 10px;
+    font-weight: 600;
+    margin-bottom: 20px;
+
+    // transition effect
+    transition: all 0.7s ease-in-out;
+    &:hover {
+      background-color: $primary-color;
+      color: white;
+
+      .icon {
+        color: white;
+      }
+    }
+    &:disabled {
+      background-color: gray;
+      color: white;
+    }
+
+    .icon {
+      font-size: 30px;
+      color: $primary-color;
+    }
+  }
+}
