@@ -11,6 +11,7 @@ import CustomerInformation from './customerInformation/CustomerInformation.compo
 import Transactions from './transactions/Transactions.component';
 import RecurringSubscriptions from './recurringsubs/RecurringSubscriptions.component';
 import usePostData from '@/state/usePostData';
+import VaultInformation from './vaultInformation/VaultInformation.component';
 
 const CustomerOverview = () => {
   const router = useRouter();
@@ -31,8 +32,14 @@ const CustomerOverview = () => {
       title: 'Recurring Subscriptions',
       key: '3',
       content: <RecurringSubscriptions />,
+      hideIf: !data?.payload?.vault,
     },
-  ] as { title: string; key: string; content: ReactNode }[];
+    {
+      title: 'Vaulted Payment Methods',
+      key: '4',
+      content: <VaultInformation />,
+    },
+  ] as { title: string; key: string; content: ReactNode; hideIf?: boolean }[];
 
   const { mutate: postTransaction } = usePostData({
     url: `/transaction/vaulted-transact`,
@@ -117,6 +124,7 @@ const CustomerOverview = () => {
             <Button
               className={styles.paymentMethodButton}
               onClick={handleTransaction}
+              disabled={!customer?.vault}
             >
               <FaMoneyBillWave className={styles.icon} />
             </Button>
@@ -126,7 +134,7 @@ const CustomerOverview = () => {
       <div className={styles.navContainer}>
         <Tabs defaultActiveKey="1" type="card">
           {tabs.map((tab) => (
-            <Tabs.TabPane tab={tab.title} key={tab.key}>
+            <Tabs.TabPane tab={tab.title} key={tab.key} disabled={tab.hideIf}>
               <AnimatePresence mode="wait">
                 <AnimatedDiv
                   transitionType="fade"

@@ -87,7 +87,7 @@ $simple-animation: all 0.2s ease-in-out;
     color: $accent-color-dark;
     width: 100%;
     border: none;
-    input { 
+    input {
       color: $quaternary-color-lighter;
     }
 
@@ -98,6 +98,12 @@ $simple-animation: all 0.2s ease-in-out;
     &:focus {
       // outline: none;
       // background-color: $tertiary-color-lighter;
+    }
+
+    // disabled state
+    &:disabled {
+      background-color: $quintenary-color-lighter;
+      color: gray;
     }
 
     @include mobile {

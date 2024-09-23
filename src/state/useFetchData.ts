@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from '@/utils/axios';
 import { useSearchStore as store } from './search/search';
+import { message } from 'antd';
+import decryptData from '@/utils/decryptData';
 
 const fetchData = async (options?: {
   url?: string;
@@ -23,6 +25,14 @@ const fetchData = async (options?: {
   const { data } = await axios.get(
     `${options?.url}?keyword=${keyword}&pageNumber=${pageNumber}&limit=${pageLimit}&filterOptions=${filter}&sortBy=${sort}`
   );
+  // if data.payload is of type string, try to decode it
+  if (typeof data.payload === 'string') {
+    try {
+      data.payload = JSON.parse(decryptData(data.payload));
+    } catch (err) {
+      console.error(err);
+    }
+  }
   return data;
 };
 
@@ -73,7 +83,12 @@ export default (options?: {
       onSuccess: options?.onSuccess,
       // refetchInterval: 2000,
       retry: 1,
-      onError: options?.onError,
+      onError(err: any) {
+        if (options?.onError) {
+          options.onError(err);
+        }
+        message.error(err?.response?.data?.message || 'An error occurred');
+      },
       enabled: options?.enabled,
       refetchOnWindowFocus: options?.refetchOnWindowFocus || false,
     }

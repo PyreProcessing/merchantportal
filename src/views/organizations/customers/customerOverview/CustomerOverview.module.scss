@@ -33,8 +33,9 @@
       }
     }
     &:disabled {
-      background-color: gray;
+      background-color: rgb(179, 179, 179);
       color: white;
+      cursor: not-allowed;
     }
 
     .icon {

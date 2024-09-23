@@ -7,6 +7,8 @@ type InterfaceState = {
   currentForm: any;
   transactionData: any;
   transactionMethod: any;
+  disableForm: boolean;
+  setDisableForm: (value: boolean) => void;
   setTransactionMethod: (method: string) => void;
   setTransactionDataValues: (values: any) => void;
   setCurrentForm: (form: any) => void;
@@ -21,6 +23,10 @@ export const useInterfaceStore = create<InterfaceState>(
     currentForm: undefined,
     transactionData: {},
     transactionMethod: '',
+    disableForm: false,
+    setDisableForm(value: any) {
+      set({ disableForm: value });
+    },
     setTransactionMethod: (method: string) =>
       set({ transactionMethod: method }),
     setTransactionDataValues: (values: any) => {

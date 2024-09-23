@@ -120,6 +120,7 @@ const Recurring = ({ form, onFinish, showSubmitButton }: RecurringProps) => {
                     initialValue="month"
                   >
                     <Select>
+                      <Select.Option value="minute">minute</Select.Option>
                       <Select.Option value="day">Day</Select.Option>
                       <Select.Option value="week">Week</Select.Option>
                       <Select.Option value="month">Month</Select.Option>

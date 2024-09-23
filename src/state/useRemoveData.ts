@@ -20,6 +20,7 @@ const deleteData = async (url: string, formData: any) => {
  */
 export default (options: {
   queriesToInvalidate?: string[];
+  queriesToReset?: string[];
   successMessage?: string;
   redirectUrl?: string;
 }) => {
@@ -31,6 +32,11 @@ export default (options: {
     {
       onSuccess: (data: any) => {
         message.success(options.successMessage || 'Data Removed successfully');
+        console.log(`resetting queries: ${options.queriesToReset}`);
+        options.queriesToReset?.forEach((query: string) => {
+          queryClient.resetQueries([query]);
+        });
+        console.log(`invalidating queries: ${options.queriesToInvalidate}`);
         options.queriesToInvalidate?.forEach((query: string) => {
           queryClient.invalidateQueries([query]);
         });
