@@ -58,6 +58,7 @@ const InventoryDetails = () => {
   });
 
   const onFinish = (values: any) => {
+    console.log(values.category);
     // we need to url encode the categories, so that they are slugified and special characters are removed
     if (values.category) {
       values.category = values.category.map((category: string) =>
@@ -168,6 +169,24 @@ const InventoryDetails = () => {
             </div>
             <div className={formStyles.form__inputGroup}>
               <Form.Item
+                label="Discount Price"
+                name="disCountPrice"
+                rules={[]}
+                tooltip="Discount section for applying product discounts."
+              >
+                <InputNumber
+                  min={0}
+                  controls={false}
+                  formatter={(value) =>
+                    `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                  }
+                  parser={(value: any) => value!.replace(/\$\s?|(,*)/g, '')}
+                  className={formStyles.form__input}
+                />
+              </Form.Item>
+            </div>
+            <div className={formStyles.form__inputGroup}>
+              <Form.Item
                 label="Tax Rate"
                 name="tax"
                 rules={[]}
@@ -197,6 +216,17 @@ const InventoryDetails = () => {
             </div>
           </div>
           <div className={formStyles.form__formGroup}>
+            <div className={formStyles.form__inputGroup}>
+              <Form.Item
+                label="Featured product"
+                name="featuredProduct"
+                rules={[]}
+                tooltip="Feature a product and place it at the top of an e-commerce page, highlight the item by giving it prominent visibility."
+                valuePropName="checked"
+              >
+                <Switch checkedChildren="Yes" unCheckedChildren="No" />
+              </Form.Item>
+            </div>
             <div className={formStyles.form__inputGroup}>
               <Form.Item
                 label="Out of Stock"
