@@ -91,18 +91,18 @@ const VaultInformation = () => {
       useInterfaceStore.setState({
         paymentMethod: vaultData.payload.paymentMethod,
         signUpPaymentFormValues: {
-          first_name: vaultData.payload.billingAddress.name.split(' ')[0],
+          first_name: vaultData.payload?.billingAddress?.name.split(' ')[0],
           // there might be more than one last name seperated by a space
-          last_name: vaultData.payload.billingAddress.name
+          last_name: vaultData.payload?.billingAddress?.name
             .split(' ')
             .slice(1)
             .join(' '),
-          address1: vaultData.payload.billingAddress.line1,
-          address2: vaultData.payload.billingAddress.line2,
-          city: vaultData.payload.billingAddress.city,
-          state: vaultData.payload.billingAddress.state,
-          zip: vaultData.payload.billingAddress.zip,
-          country: vaultData.payload.billingAddress.country,
+          address1: vaultData.payload?.billingAddress?.line1,
+          address2: vaultData.payload?.billingAddress?.line2,
+          city: vaultData.payload?.billingAddress?.city,
+          state: vaultData.payload?.billingAddress?.state,
+          zip: vaultData.payload?.billingAddress?.zip,
+          country: vaultData.payload?.billingAddress?.country,
           ...(vaultData.payload.paymentMethod === 'creditcard' && {
             creditCardDetails: {
               ...vaultData?.payload?.creditCardDetails,
@@ -112,11 +112,11 @@ const VaultInformation = () => {
           ...(vaultData.payload.paymentMethod === 'check' && {
             achDetails: {
               checkname: vaultData?.payload?.achDetails?.checkname,
-                  ...vaultData?.payload?.achDetails,
-                  checkaba: `XXXX${vaultData?.payload?.achDetails?.checkaba.slice(
-                    -4
-                  )}`,
-                  checkaccount: `XXXX${vaultData?.payload?.achDetails?.checkaccountLast4}`,
+              ...vaultData?.payload?.achDetails,
+              checkaba: `XXXX${vaultData?.payload?.achDetails?.checkaba.slice(
+                -4
+              )}`,
+              checkaccount: `XXXX${vaultData?.payload?.achDetails?.checkaccountLast4}`,
             },
           }),
         },
@@ -124,9 +124,6 @@ const VaultInformation = () => {
     }
   }, [vaultData]);
 
-  if (fetchLoading || createLoading || updateLoading) {
-    return <Loader />;
-  }
   return (
     <div className={styles.container}>
       {vaultData?.payload && (

@@ -88,10 +88,11 @@ const PaymentInformationForm = ({ vaultData }: PaymentInformationFormProps) => {
                   className={styles.paymentMethodButton}
                   onClick={() => setPaymentMethod('check')}
                   disabled={
+                    true
                     // if there is vaultData, and the payment method is not ach disable the button
-                    vaultData && vaultData?.paymentMethod !== 'check'
-                      ? true
-                      : false
+                    // vaultData && vaultData?.paymentMethod !== 'check'
+                    //   ? true
+                    //   : false
                   }
                 >
                   <AiOutlineBank />
@@ -157,4 +158,3 @@ const PaymentInformationForm = ({ vaultData }: PaymentInformationFormProps) => {
 };
 
 export default PaymentInformationForm;
- 
