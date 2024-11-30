@@ -20,7 +20,7 @@ const Notifications = (props: Props) => {
   return (
     <div className={styles.container}>
       <Tooltip title="Notifications">
-        <Badge count={data?.notifications.filter((n) => !n.opened).length}>
+        <Badge count={data?.notifications?.filter((n) => !n.opened).length}>
           <Button
             type="text"
             onClick={() => setIsOpen(!isOpen)}
@@ -35,12 +35,12 @@ const Notifications = (props: Props) => {
         <div className={styles.header}>
           <p>Notifications</p>
           <Badge
-            count={data?.notifications.filter((n) => !n.opened).length}
+            count={data?.notifications?.filter((n) => !n.opened).length}
             size="small"
           />
         </div>
 
-        {data?.notifications.length > 0 ? (
+        {data?.notifications?.length > 0 ? (
           data?.notifications
             .slice(
               0,
