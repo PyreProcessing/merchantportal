@@ -19,11 +19,7 @@ const updateUser = async (data: any) => {
   return userData;
 };
 
-export const useUser = (
-  token?: string,
-  onSuccess?: () => void,
-  onError?: () => void
-) => {
+export const useUser = (token?: string, onSuccess?: () => void, onError?: () => void) => {
   if (typeof window !== 'undefined' && !token) {
     token = localStorage.getItem('token') as string;
   }
@@ -38,6 +34,7 @@ export const useUser = (
       console.log(error);
       // if we errored destroy the token, in local storage
       localStorage.removeItem('token');
+      logout();
       errorHandler(error);
     },
   });

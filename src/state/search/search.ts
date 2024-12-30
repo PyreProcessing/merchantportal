@@ -14,6 +14,7 @@ interface SearchLayout {
   modifySort: (chosenSort: string) => void;
   removeSort: () => void;
   setQueryKey: (queryKey: string) => void;
+  setInclude: (include: string) => void;
 
   search: string;
   numberPages: number;
@@ -22,10 +23,14 @@ interface SearchLayout {
   filter: string;
   sort: string;
   queryKey: string;
+  include: string;
 }
 
 export const useSearchStore = create<SearchLayout>((set) => ({
   // setSearch is a function to set the search
+  setInclude(include: string) {
+    set((state) => ({ ...state, include: include }));
+  },
   setSearch: (search: string) => {
     set((state) => ({ ...state, search: search }));
   },
@@ -59,6 +64,7 @@ export const useSearchStore = create<SearchLayout>((set) => ({
     set((state) => ({ ...state, queryKey: queryKey }));
   },
 
+  include: '',
   search: '',
   numberPages: 0,
   pageNumber: 1,

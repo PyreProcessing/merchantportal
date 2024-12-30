@@ -93,6 +93,11 @@ export const navigation = (options?: {
           link: '/account/keys',
           icon: <IoCodeSlashOutline />,
         },
+        integrations: {
+          title: 'Integrations',
+          link: '/account/integrations',
+          icon: <IoCodeSlashOutline />,
+        },
       },
     },
   };

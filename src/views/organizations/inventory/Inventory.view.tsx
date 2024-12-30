@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
+import React from 'react';
 import styles from './Inventory.module.scss';
 import SearchWrapper from '@/layout/searchWrapper/SearchWrapper.layout';
 import useFetchData from '@/state/useFetchData';
