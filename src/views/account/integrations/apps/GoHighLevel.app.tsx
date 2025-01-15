@@ -12,18 +12,15 @@ const GoHighLevel = () => {
       client_id: process.env.NEXT_PUBLIC_GHL_CLIENT_ID!,
       scopes: [
         'payments/orders.readonly',
-        // 'payments/orders.write',
-        // 'payments/integration.readonly',
-        // 'payments/integration.write',
-        // 'payments/transactions.readonly',
-        // 'payments/subscriptions.readonly',
-        // 'payments/custom-provider.readonly',
-        // 'payments/custom-provider.write',
-        // 'products.readonly',
-        // 'products/prices.readonly',
-        // 'calendars.readonly',
-        // 'calendars/events.readonly',
-        // 'calendars/events.write',
+        'payments/orders.write',
+        'payments/integration.readonly',
+        'payments/integration.write',
+        'payments/transactions.readonly',
+        'payments/subscriptions.readonly',
+        'payments/custom-provider.readonly',
+        'payments/custom-provider.write',
+        'products.readonly',
+        'products/prices.readonly'
       ],
     };
     // to authenticate with GoHighLevel, we need to open a new window with a link to the GoHighLevel authentication page
