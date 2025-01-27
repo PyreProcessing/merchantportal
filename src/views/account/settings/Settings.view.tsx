@@ -20,8 +20,7 @@ const SettingsView = (props: Props) => {
     error: userErrorDetails,
     isLoading: userLoadingDetails,
   } = useUserDetails(loggedInData?.user._id);
-  const { mutate: updateUser, isLoading: userUpdateIsLoading } =
-    useUpdateUser();
+  const { mutate: updateUser, isLoading: userUpdateIsLoading } = useUpdateUser();
   const [form] = Form.useForm();
   const [unsaved, setUnsaved] = useState(false);
   useWarnIfUnsavedChanges(unsaved, () => {
@@ -29,10 +28,14 @@ const SettingsView = (props: Props) => {
   });
 
   const onFinish = (values: any) => {
+    console.log(values);
     updateUser(values);
     setUnsaved(false);
   };
 
+  const handleColorChange = (field) => (_, colorHex) => {
+    form.setFieldsValue({ servicePageOptions: { branding: { [field]: colorHex } } });
+  };
   useEffect(() => {
     form.setFieldsValue({
       firstName: userDetails?.firstName,
@@ -41,6 +44,7 @@ const SettingsView = (props: Props) => {
       phoneNumber: userDetails?.phoneNumber,
       sex: userDetails?.sex,
       businessInfo: userDetails?.businessInfo,
+      ...userDetails,
     });
   }, [userDetails]);
 
@@ -55,11 +59,24 @@ const SettingsView = (props: Props) => {
         onFieldsChange={() => {
           setUnsaved(true);
         }}
+        initialValues={{
+          servicePageOptions: {
+            branding: {
+              primaryColor: '#1890ff',
+              secondaryColor: '#1890ff',
+              textColor: '#000000',
+            },
+          },
+        }}
       >
         <Container title="Settings">
-          {userLoadingDetails ? <Loader /> : <SettingsForm photoForm={form} />}
+          {userLoadingDetails ? (
+            <Loader />
+          ) : (
+            <SettingsForm photoForm={form} handleColorChange={handleColorChange} />
+          )}
         </Container>
-        <SaveButton isLoading={userUpdateIsLoading} isDisabled={userLoadingDetails}/>
+        <SaveButton isLoading={userUpdateIsLoading} isDisabled={userLoadingDetails} />
       </Form>
     </div>
   );

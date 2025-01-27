@@ -65,13 +65,6 @@ const AppWrapper = (props: Props) => {
 
   return (
     <>
-      {/* <LiveOverlay
-        show={
-          liveVideoData?.success &&
-          /^(prestream|streaming)$/i.test(liveVideoData?.video.status)
-        }
-      /> */}
-
       {props.children}
     </>
   );

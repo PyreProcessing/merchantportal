@@ -7,7 +7,6 @@ import { FaGears } from 'react-icons/fa6';
 
 const ServicesPage = () => {
   return (
-    <>
       <PageLayout
         pages={[navigation()?.organization?.links?.service_page]}
         controlNav={[
@@ -20,7 +19,6 @@ const ServicesPage = () => {
       >
         <ServicePage />
       </PageLayout>
-    </>
   );
 };
 

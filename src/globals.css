@@ -78,6 +78,10 @@ a {
   /* inherit color from whatever is displaying it */
   color: inherit;
 }
+
+#__next { 
+  height: 100%;
+}
 /* set html, body background defaults */
 html, body {
   /* use a dark linear gradient with blue colors */
