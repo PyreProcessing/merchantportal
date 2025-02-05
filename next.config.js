@@ -4,12 +4,13 @@ const nextConfig = {
   env: {
     API_URL: process.env.API_URL || 'https://api.pyreprocessing.com/api/v1',
     ENV: process.env.ENV,
-    ENCRYPTION_KEY: 'asdf234as2342asdf2i;lk342342;$23423',
+    ENCRYPTION_KEY: process.env.ENCRYPTION_KEY,
     GHL_CLIENT_ID: process.env.NEXT_PUBLIC_GHL_CLIENT_ID,
     GHL_REDIRECT_URI: process.env.NEXT_PUBLIC_GHL_REDIRECT_URI,
     GHL_BASE_URL: process.env.NEXT_PUBLIC_GHL_BASE_URL,
     CALENDLY_CLIENT_ID: process.env.CALENDLY_CLIENT_ID,
     CALENDLY_REDIRECT_URI: process.env.CALENDLY_REDIRECT_URI,
+    OAUTH_REDIRECT_URI: process.env.NEXT_PUBLIC_OAUTH_REDIRECT_URI,
   },
 
   //Redirect / to /dash
