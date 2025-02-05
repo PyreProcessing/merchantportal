@@ -1,1 +1,14 @@
-.container{}
+.container {
+  .appsContainer {
+    padding: 2%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+    grid-gap: 40px;
+
+    .app{
+      // ensure a consistent height for all cards
+      min-height: 200px;
+      max-height: 500px;
+    }
+  }
+}

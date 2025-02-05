@@ -20,7 +20,7 @@ const GoHighLevel = () => {
         'payments/custom-provider.readonly',
         'payments/custom-provider.write',
         'products.readonly',
-        'products/prices.readonly'
+        'products/prices.readonly',
       ],
     };
     // to authenticate with GoHighLevel, we need to open a new window with a link to the GoHighLevel authentication page
@@ -28,7 +28,9 @@ const GoHighLevel = () => {
     window.open(
       `${process.env.NEXT_PUBLIC_GHL_BASE_URL}/oauth/chooselocation?response_type=${
         options.request_type
-      }&client_id=${options.client_id}&redirect_uri=${options.redirectUri}&scope=${options.scopes.join(' ')}`,
+      }&client_id=${options.client_id}&redirect_uri=${
+        options.redirectUri
+      }&state=ghl&scope=${options.scopes.join(' ')}`,
       '_blank'
     );
   };
@@ -47,7 +49,7 @@ const GoHighLevel = () => {
   }) as any;
 
   return (
-    <div className={styles.card}>
+    <div className={styles.container}>
       <img
         src={`https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://cdn.filesafe.space/location%2FknES3eSWYIsc5YSZ3YLl%2Fimages%2F63413f4d-3691-4d3e-8e9c-31ba9bd55cf9.png?alt=media`}
         alt="Integration Logo"

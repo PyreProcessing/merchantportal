@@ -1,0 +1,5 @@
+@import '../_shared.module';
+.container {
+  @extend .card;
+  --bg-color: #07223d;
+}

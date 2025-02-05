@@ -2,29 +2,33 @@ import React from 'react';
 import useApiHook from '@/state/useApi';
 import Loader from '@/components/loader/Loader.component';
 import Error from '@/components/error/Error.component';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const GHLOauth = () => {
   const router = useRouter();
   // Get the code from query params
   const code = new URLSearchParams(window.location.search).get('code');
+  const state = new URLSearchParams(window.location.search).get('state');
   const [authenticated, setAuthenticated] = React.useState(false);
-  const [loading, setLoading] = React.useState(false); 
+  const [loading, setLoading] = React.useState(false);
+  const [isError, setIsError] = React.useState(false);
+  const [error, setError] = React.useState(null);
   const requestSent = React.useRef(false); // Track if the request has been sent
 
-  const {
-    mutate: getAccessToken,
-    isError,
-    error,
-  } = useApiHook({
+  const { mutate: getAccessToken } = useApiHook({
     method: 'POST',
-    key: 'ghl',
-    enabled: !!code,
+    key: `${state}`,
+    enabled: !!code && !!state,
     onSuccessCallback: () => {
       setAuthenticated(true);
       setLoading(false);
     },
-    onErrorCallback: () => {
+    onErrorCallback: (error) => {
+      console.log(`is error: ${isError}`);
+      console.log(error);
+      setError(error);
+      setIsError(true);
       setLoading(false);
     },
   }) as any;
@@ -34,12 +38,12 @@ const GHLOauth = () => {
     if (code && !requestSent.current) {
       setLoading(true); // Set loading state
       requestSent.current = true; // Mark as sent
-      getAccessToken({ url: '/owner/oauth/ghl', formData: { code } });
+      getAccessToken({ url: `/owner/oauth/${state}`, formData: { code } });
     }
   }, [code, getAccessToken]);
- 
+
   React.useEffect(() => {
-    if (authenticated) { 
+    if (authenticated) {
       // timeout 5 seconds before redirecting back to integrations page
       setTimeout(() => {
         router.push('/account/integrations');
@@ -49,13 +53,8 @@ const GHLOauth = () => {
 
   return (
     <div style={styles.card}>
-      <img
-        src={`https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https://cdn.filesafe.space/location%2FknES3eSWYIsc5YSZ3YLl%2Fimages%2F63413f4d-3691-4d3e-8e9c-31ba9bd55cf9.png?alt=media`}
-        alt="Integration Logo"
-        style={styles.logo}
-      />
+      <Image src={`/images/logo.png`} alt="Pyre Logo" style={styles.logo} width={500} height={200} />
       <div style={styles.subContainer}>
-        <h3 style={styles.title}>GoHighLevel Integration</h3>
         {loading ? (
           <div>
             <span>Authenticating...</span>
@@ -64,7 +63,7 @@ const GHLOauth = () => {
         ) : isError ? (
           <div style={styles.subContainer}>
             <span>Failed to authenticate</span>
-            <Error error={error?.message} />
+            <Error error={error} />
           </div>
         ) : (
           <span>Authenticated successfully, redirecting to homepage... </span>
@@ -85,8 +84,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     width: '100%',
     padding: '20px',
     borderRadius: '8px',
-    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-    backgroundColor: '#07223d',
+    // boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    // backgroundColor: '#07223d',
   },
   subContainer: {
     display: 'flex',
@@ -99,8 +98,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     margin: '20px 0',
   },
   logo: {
-    width: '100%',
-    height: 'auto',
+    // width: '100%',
+    // height: 'auto',
     maxWidth: '500px',
     objectFit: 'contain',
   },

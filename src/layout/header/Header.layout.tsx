@@ -1,11 +1,11 @@
+import { ReactNode} from 'react';
 import { useLayoutStore } from '@/state/ui/layout';
 import styles from './Header.module.scss';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { Avatar, Breadcrumb, Tooltip } from 'antd';
+import { Breadcrumb, Tooltip } from 'antd';
 import Link from 'next/link';
 import { useUser, logout } from '@/state/auth';
 import { BiLogOutCircle } from 'react-icons/bi';
-import { ReactNode } from 'react';
 // import { useSelectedProfile } from '@/state/profile/profile';
 import Notifications from './components/Notifications.component';
 
@@ -39,10 +39,7 @@ const Header = (props: Props) => {
             ) : (
               <Link
                 href={route.path as string}
-                className={`${
-                  routes[routes.length - 1].title === route.title &&
-                  styles.active
-                }`}
+                className={`${routes[routes.length - 1].title === route.title && styles.active}`}
               >
                 {route.title}
               </Link>

@@ -1,7 +1,6 @@
 import { navigation } from '@/data/navigation';
 import PageLayout from '@/layout/page/Page.layout';
-import DashboardView from '@/views/home/dashboard/Dashboard.view';
-import GHLOauth from '@/views/oauth/GHLOauth.view';
+import Oauth from '@/views/oauth/Oauth.view';
 import Head from 'next/head';
 
 const Dashboard = () => {
@@ -14,11 +13,8 @@ const Dashboard = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <PageLayout
-        pages={[navigation().account.links.integrations]}
-        largeSideBar={true}
-      >
-        <GHLOauth />
+      <PageLayout pages={[navigation().account.links.integrations]} largeSideBar={true}>
+        <Oauth />
       </PageLayout>
     </>
   );

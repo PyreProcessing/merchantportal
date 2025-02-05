@@ -8,6 +8,8 @@ const nextConfig = {
     GHL_CLIENT_ID: process.env.NEXT_PUBLIC_GHL_CLIENT_ID,
     GHL_REDIRECT_URI: process.env.NEXT_PUBLIC_GHL_REDIRECT_URI,
     GHL_BASE_URL: process.env.NEXT_PUBLIC_GHL_BASE_URL,
+    CALENDLY_CLIENT_ID: process.env.CALENDLY_CLIENT_ID,
+    CALENDLY_REDIRECT_URI: process.env.CALENDLY_REDIRECT_URI,
   },
 
   //Redirect / to /dash
@@ -27,12 +29,7 @@ const nextConfig = {
   },
 
   images: {
-    domains: [
-      's3.wasabisys.com',
-      'www.countryflags.io',
-      'upload.wikimedia.org',
-      'flagcdn.com',
-    ],
+    domains: ['s3.wasabisys.com', 'www.countryflags.io', 'upload.wikimedia.org', 'flagcdn.com'],
   },
 };
 
